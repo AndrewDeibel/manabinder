@@ -1,0 +1,10 @@
+<mb-tracker-player
+	(increaseStorm)="increaseStorm()"
+	(decreaseStorm)="decreaseStorm()"
+	*ngIf="player"
+	[player]="player"
+	[storm]="tracker.storm"></mb-tracker-player>
+	
+<div class="tracker-menu">
+	<mb-menu [menu]="menuTracker"></mb-menu>
+</div>

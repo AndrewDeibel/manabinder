@@ -1,0 +1,334 @@
+@import "settings";
+@import "../button/button.component.scss";
+
+.menu {
+	.menu-search {
+		padding: $spacing;
+		border-bottom: $border;
+		+ ul {
+			li:first-child a {
+				border-radius: 0 !important;
+			}
+		}
+	}
+	a:not(.no-ellipsis) {
+		.text {
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+	}
+	a {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		min-height: 40px;
+		padding: 8px 20px;
+		flex: 1;
+		max-width: 100%;
+		user-select: none;
+		@media (max-width: $screen-small) {
+			padding: 8px 12px;
+		}
+		&:not(.button):hover {
+			background: $header-bg;
+		}
+		.text {
+			flex: 1 0 0;
+			min-width: 0;
+			+ .price {
+				padding-left: $spacing;
+			}
+		}
+		.symbol {
+			filter: none !important;
+			height: 20px;
+			width: 20px;
+			display: flex;
+			justify-content: center;
+			img {
+				max-height: 100%;
+				display: block;
+			}
+			+ * {
+				padding-left: $spacing;
+			}
+		}
+		.icon {
+			fa-icon {
+				width: 16px;
+				height: 16px;
+			}
+			+ .text {
+				padding-left: $spacing;
+			}
+		}
+		span + .icon-expand {
+			padding-left: $spacing;
+		}
+		.price {
+			color: $green;
+			font-weight: bold;
+		}
+	}
+	li {
+		position: relative;
+		display: flex;
+		user-select: none;
+		flex-wrap: wrap;
+		//flex: 1 0 0; // Made card detail tabs span parent
+		&.active {
+			> a {
+				box-shadow: inset 3px 0 0 $primary-color;
+				background: rgba($primary-color, .1);
+			}
+		}
+
+		&.disabled {
+			opacity: .5;
+			cursor: not-allowed;
+			a {
+				pointer-events: none;
+			}
+		}
+
+		.form {
+			display: flex;
+			flex-wrap: nowrap;
+		}
+
+		hr {
+			border-top: 0;
+			border-color: rgba(black, .2);
+			margin: 8px 0;
+		}
+
+		// Handle icon rotation
+		&.icon-tap {
+			> a {
+				> .icon {
+					fa-icon {
+						transform: rotateY(180deg);
+					}
+				}
+			}
+		}
+		mb-textbox {
+			display: block;
+			+ mb-button {
+				&.padding {
+					padding-left: 0;
+				}
+			}
+		}
+		mb-button {
+			display: block;
+		}
+
+		// See collection card version menu for why
+		mb-menu {
+			min-width: 100%;
+		}
+	}
+    ul {
+		position: relative;
+        .menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: $panel-bg;
+            box-shadow: $shadow;
+            border-radius: $border-radius;
+			white-space: nowrap;
+			z-index: 1;
+            &.anchor-right {
+                left: auto;
+                right: 0;
+			}
+			&.anchor-bottom {
+				bottom: 100%;
+				top: auto;
+			}
+			&.anchor-center {
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			ul {
+				overflow-y: auto;
+				// Sub-sub menu
+				.menu {
+					position: relative;
+					top: 0;
+					left: 0;
+					right: auto;
+					bottom: auto;
+					margin: $spacing;
+				}
+			}
+        }
+	}
+
+	// Borders
+	&.borders {
+		&:not(.horizonal) {
+			li:not(:last-child) {
+				border-bottom: $border;
+			}
+		}
+		&.horizonal {
+			li:not(:last-child) {
+				border-right: $border;
+			}
+		}
+	}
+
+	// Sizes
+    &.small {
+		a {
+			padding: 8px 12px;
+			font-size: 14px;
+			.icon {
+				fa-icon {
+					width: 14px;
+					height: 14px;
+				}
+			}
+		}
+    }
+    &.large {
+		a {
+			padding: 12px 24px;
+			font-size: 120%;
+			.icon {
+				fa-icon {
+					width: 24px;
+					height: 24px;
+				}
+			}
+		}
+    }
+	
+	// Round
+    &.round {
+		> ul > li {
+			&:first-child > a {
+				border-top-left-radius: $border-radius;
+				border-top-right-radius: $border-radius;
+			}
+			&:last-child > a {
+				border-bottom-left-radius: $border-radius;
+				border-bottom-right-radius: $border-radius;
+			}
+		}
+        &.horizontal {
+			> ul > li {
+				&:first-child > a {
+					border-top-left-radius: $border-radius;
+					border-bottom-left-radius: $border-radius;
+					border-top-right-radius: 0;
+					border-bottom-right-radius: 0;
+				}
+				&:last-child > a {
+					border-top-right-radius: $border-radius;
+					border-bottom-right-radius: $border-radius;
+					border-bottom-left-radius: 0;
+					border-top-left-radius: 0;
+				}
+				&:first-child:last-child > a {
+					border-radius: $border-radius;
+				}
+			}
+        }
+	}
+    &.round-large {
+		> ul > li {
+			&:first-child > a {
+				border-top-left-radius: $border-radius-large;
+				border-top-right-radius: $border-radius-large;
+			}
+			&:last-child > a {
+				border-bottom-left-radius: $border-radius-large;
+				border-bottom-right-radius: $border-radius-large;
+			}
+		}
+        &.horizontal {
+			> ul > li {
+				&:first-child > a {
+					border-top-left-radius: $border-radius-large;
+					border-bottom-left-radius: $border-radius-large;
+					border-top-right-radius: 0;
+				}
+				&:last-child > a {
+					border-top-right-radius: $border-radius-large;
+					border-bottom-right-radius: $border-radius-large;
+					border-bottom-left-radius: 0;
+				}
+				&:first-child:last-child > a {
+					border-radius: $border-radius-large;
+				}
+			}
+        }
+	}
+	&.round-top {
+		li {
+			&:first-child > a {
+				border-top-left-radius: $border-radius;
+				border-top-right-radius: $border-radius;
+			}
+		}
+	}
+	&.round-bottom {
+		li {
+			&:last-child > a {
+				border-bottom-right-radius: $border-radius;
+				border-bottom-left-radius: $border-radius;
+			}
+		}
+	}
+
+	// Tabs
+	&.tabs {
+		border-bottom: 1px solid $border-color;
+		> ul {
+			> li {
+                > a {
+                    border-top-left-radius: $border-radius;
+                    border-top-right-radius: $border-radius;
+                    @media (max-width: $screen-medium) {
+                        flex-direction: column;
+                        align-items: center;
+                        font-size: 100%;
+                        padding: $spacing;
+                        .text {
+							flex: initial;
+							padding-left: 0 !important;
+							margin-top: 4px;
+						}
+						.icon-expand {
+							display: none;
+						}
+					}
+					@media (max-width: $screen-small) {
+						font-size: 14px;
+					}
+                }
+			}
+		}
+	}
+
+	// Horizontal
+    &.tabs, &.horizontal {
+        > ul {
+			display: flex;
+			flex-wrap: nowrap;
+            > li {
+				&.active {
+					> a {
+						box-shadow: inset 0 -3px 0 0 $primary-color, 0 1px 0 0 $primary-color;
+					}
+				}
+            }
+        }
+    }
+}

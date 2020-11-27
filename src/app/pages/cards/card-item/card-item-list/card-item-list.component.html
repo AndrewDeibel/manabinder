@@ -1,0 +1,29 @@
+<a
+	class="item"
+	[routerLink]="card.route ? card.route : []"
+>
+	<figure class="card-image {{card.no_images ? 'placeholder' : ''}}" *ngIf="card.images">
+		<div class="image-wrapper">
+			<img src="{{card.images.art_crop}}" />
+		</div>
+		<div *ngIf="false" class="zoom-image-wrapper">
+			<img src="{{card.images.large}}" />
+		</div>
+	</figure>
+	<aside class="card-information">
+		<div class="card-name">
+			{{card.name}}
+			<div class="card-mana-cost">
+				<span [innerHtml]="card.mana_cost"></span>
+			</div>
+		</div>
+		<a routerLink="/sets/{{card.set_code.toLowerCase()}}" *ngIf="card.set_symbol || card.set_name" class="card-set">
+			<img class="set-symbol" src="{{card.set_symbol}}" />
+			<span class="set-name">{{card.set_name}}</span>
+		</a>
+		<div class="card-price" *ngIf="card.price">
+			<span class="price">{{card.price | currency}}</span>
+		</div>
+	</aside>
+	<mb-menu [menu]="card.itemsMenu"></mb-menu>
+</a>

@@ -1,0 +1,19 @@
+<header id="header">
+	<div class="max">
+		<div class="flex padded">
+			<div>
+				<a class="logo" routerLink="">
+					<img src="/assets/logo/manabinder2.svg" />
+					<span><b>Mana</b> Binder</span>
+				</a>
+			</div>
+			<div class="flex justify-center box">
+				<mb-search></mb-search>
+			</div>
+			<div *ngIf="signedIn" class="profile flex justify-end" mb-profile></div>
+			<div *ngIf="!signedIn" class="login flex justify-end">
+				<mb-menu [menu]="menuLogin"></mb-menu>
+			</div>
+		</div>
+	</div>
+</header>

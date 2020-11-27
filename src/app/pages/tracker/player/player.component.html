@@ -1,0 +1,151 @@
+<div class="wrapper">
+	<mb-menu class="menuCommanderDamage" [menu]="menuCommanderDamage"></mb-menu>
+	<div class="commanderDamage" [class.active]="showCommanderDamage">
+		<div class="player1 tracker">
+			<div class="tracker-increase" (click)="player.increasePlayer1CommanderDamage()">
+				<fa-icon icon="plus"></fa-icon>
+			</div>
+			<div class="tracker-decrease" (click)="player.decreasePlayer1CommanderDamage()">
+				<fa-icon icon="minus"></fa-icon>
+			</div>
+			<div class="tracker-value">
+				<div class="value">{{player.commanderDamagePlayer1}}</div>
+				<div class="label">Opponent 1</div>
+			</div>
+		</div>
+		<div class="player2 tracker">
+			<div class="tracker-increase" (click)="player.increasePlayer2CommanderDamage()">
+				<fa-icon icon="plus"></fa-icon>
+			</div>
+			<div class="tracker-decrease" (click)="player.decreasePlayer2CommanderDamage()">
+				<fa-icon icon="minus"></fa-icon>
+			</div>
+			<div class="tracker-value">
+				<div class="value">{{player.commanderDamagePlayer2}}</div>
+				<div class="label">Opponent 2</div>
+			</div>
+		</div>
+		<div class="player3 tracker">
+			<div class="tracker-increase" (click)="player.increasePlayer3CommanderDamage()">
+				<fa-icon icon="plus"></fa-icon>
+			</div>
+			<div class="tracker-decrease" (click)="player.decreasePlayer3CommanderDamage()">
+				<fa-icon icon="minus"></fa-icon>
+			</div>
+			<div class="tracker-value">
+				<div class="value">{{player.commanderDamagePlayer3}}</div>
+				<div class="label">Opponent 3</div>
+			</div>
+		</div>
+	</div>
+	<div class="life-total tracker">
+		<div class="tracker-increase" (click)="player.increaseLife()">
+			<fa-icon icon="plus"></fa-icon>
+		</div>
+		<div class="tracker-decrease" (click)="player.decreaseLife()">
+			<fa-icon icon="minus"></fa-icon>
+		</div>
+		<div class="tracker-value">
+			<div class="value">{{player.lifeTotal}}</div>
+			<div class="label">Life Total</div>
+		</div>
+	</div>
+	<div class="mana-white tracker">
+		<div class="tracker-increase" (click)="player.increaseManaWhite()">
+			<fa-icon icon="plus"></fa-icon>
+		</div>
+		<div class="tracker-decrease" (click)="player.decreaseManaWhite()">
+			<fa-icon icon="minus"></fa-icon>
+		</div>
+		<div class="tracker-value">
+			<div class="value">{{player.manaWhite}}</div>
+			<div class="symbol">
+				<img src="{{symbolWhite}}" />
+			</div>
+		</div>
+	</div>
+	<div class="mana-blue tracker">
+		<div class="tracker-increase" (click)="player.increaseManaBlue()">
+			<fa-icon icon="plus"></fa-icon>
+		</div>
+		<div class="tracker-decrease" (click)="player.decreaseManaBlue()">
+			<fa-icon icon="minus"></fa-icon>
+		</div>
+		<div class="tracker-value">
+			<div class="value">{{player.manaBlue}}</div>
+			<div class="symbol">
+				<img src="{{symbolBlue}}" />
+			</div>
+		</div>
+	</div>
+	<div class="mana-black tracker">
+		<div class="tracker-increase" (click)="player.increaseManaBlack()">
+			<fa-icon icon="plus"></fa-icon>
+		</div>
+		<div class="tracker-decrease" (click)="player.decreaseManaBlack()">
+			<fa-icon icon="minus"></fa-icon>
+		</div>
+		<div class="tracker-value">
+			<div class="value">{{player.manaBlack}}</div>
+			<div class="symbol">
+				<img src="{{symbolBlack}}" />
+			</div>
+		</div>
+	</div>
+	<div class="mana-red tracker">
+		<div class="tracker-increase" (click)="player.increaseManaRed()">
+			<fa-icon icon="plus"></fa-icon>
+		</div>
+		<div class="tracker-decrease" (click)="player.decreaseManaRed()">
+			<fa-icon icon="minus"></fa-icon>
+		</div>
+		<div class="tracker-value">
+			<div class="value">{{player.manaRed}}</div>
+			<div class="symbol">
+				<img src="{{symbolRed}}" />
+			</div>
+		</div>
+	</div>
+	<div class="mana-green tracker">
+		<div class="tracker-increase" (click)="player.increaseManaGreen()">
+			<fa-icon icon="plus"></fa-icon>
+		</div>
+		<div class="tracker-decrease" (click)="player.decreaseManaGreen()">
+			<fa-icon icon="minus"></fa-icon>
+		</div>
+		<div class="tracker-value">
+			<div class="value">{{player.manaGreen}}</div>
+			<div class="symbol">
+				<img src="{{symbolGreen}}" />
+			</div>
+		</div>
+	</div>
+	<div class="mana-colorless tracker">
+		<div class="tracker-increase" (click)="player.increaseManaColorless()">
+			<fa-icon icon="plus"></fa-icon>
+		</div>
+		<div class="tracker-decrease" (click)="player.decreaseManaColorless()">
+			<fa-icon icon="minus"></fa-icon>
+		</div>
+		<div class="tracker-value">
+			<div class="value">{{player.manaColorless}}</div>
+			<div class="symbol">
+				<img src="{{symbolColorless}}" />
+			</div>
+		</div>
+	</div>
+	<div class="mana-colorless tracker">
+		<div class="tracker-increase" (click)="_increaseStorm()">
+			<fa-icon icon="plus"></fa-icon>
+		</div>
+		<div class="tracker-decrease" (click)="_decreaseStorm()">
+			<fa-icon icon="minus"></fa-icon>
+		</div>
+		<div class="tracker-value">
+			<div class="value">{{storm}}</div>
+			<div class="symbol">
+				<fa-icon icon="thunderstorm"></fa-icon>
+			</div>
+		</div>
+	</div>
+</div>

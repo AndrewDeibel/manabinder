@@ -1,0 +1,58 @@
+<!-- Header -->
+<div *ngIf="itemsHeader" id="item-header" class="z-4 border-bottom">
+	<div class="max box">
+		<div class="flex box padded flex-center flex-wrap">
+
+			<!-- Symbol -->
+			<div *ngIf="itemsHeader.symbol">
+				<div class="symbol-wrapper">
+					<img class="symbol {{itemsHeader.symbolRarity}}" src="{{itemsHeader.symbol}}" />
+				</div>
+			</div>
+
+			<!-- Icon -->
+			<div *ngIf="itemsHeader.icon" class="icon-wrapper">
+				<fa-icon [icon]="itemsHeader.icon"></fa-icon>
+			</div>
+
+			<!-- Title -->
+			<div class="box">
+				<h2 class="title">
+					{{itemsHeader.title}}
+				</h2>
+				<div class="subheading">
+					{{itemsHeader.subtitle}}
+					<span *ngIf="itemsHeader.price">-
+						<span class="price">
+							{{itemsHeader.price | currency}}
+						</span>
+					</span>
+				</div>
+
+				<div class="tags" *ngIf="itemsHeader.tags.length">
+					<div class="flex padded flex-wrap">
+						<div *ngFor="let tag of itemsHeader.tags">
+							<mb-tag [tag]="tag"></mb-tag>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Menu -->
+			<div class="main-header-menu" *ngIf="itemsHeader.menu">
+				<mb-menu [menu]="itemsHeader.menu"></mb-menu>
+			</div>
+
+			<!-- Toggle -->
+			<div *ngIf="itemsHeader.toggle">
+				<mb-toggle [toggle]="itemsHeader.toggle"></mb-toggle>
+			</div>
+
+			<!-- Button -->
+			<div *ngIf="itemsHeader.button">
+				<mb-button [button]="itemsHeader.button"></mb-button>
+			</div>
+
+		</div>
+	</div>
+</div>

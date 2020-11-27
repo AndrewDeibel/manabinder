@@ -1,0 +1,98 @@
+@import "settings";
+
+.card-grid, .deck-grid {
+	flex-direction: column;
+    display: flex;
+    padding: $spacing / 2;
+    align-items: center;
+    position: relative;
+    transition: $transition;
+	cursor: pointer;
+	border-radius: $border-radius;
+	flex: 1 0 0;
+    &:hover {
+		background: rgba(black, .05);
+    }
+    &:active {
+		border-color: $primary-color!important;
+		box-shadow: $shadow-focus !important;
+		outline: 0 !important;
+    }
+    .card-image {
+		width: 100%;
+        position: relative;
+        .image-wrapper {
+            width: 100%;
+			overflow: hidden;
+			box-shadow: $shadow;
+			border-radius: $border-radius-card;
+			img {
+				display: block;
+			}
+			&.art {
+				width: 100%;
+				position: relative;
+				padding-bottom: $art-ratio;
+				border-radius: $border-radius;
+				.img-art {
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					background-size: cover;
+					background-position: center;
+				}
+			}
+		}
+		> mb-menu {
+			position: absolute;
+			left: $spacing;
+			bottom: $spacing;
+		}
+    }
+    .card-information {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		padding: $spacing;
+        .card-name {
+			font-size: 18px;
+            margin: 0;
+            color: $primary-color;
+            font-weight: bold;
+            display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+			mb-mana-cost {
+				padding: 4px;
+			}
+        }
+        .card-set {
+            display: flex;
+            align-items: center;
+            .set-symbol {
+                width: 14px;
+				height: 14px;
+				display: none;
+            }
+            .set-name {
+				text-align: center;
+            }
+        }
+        .card-price {
+            color: $green;
+            font-weight: bold;
+            font-size: 14px;
+			text-align: center;
+			margin-top: 4px;
+			display: flex;
+        }
+    }
+    @media (max-width: $screen-medium) {
+    }
+}

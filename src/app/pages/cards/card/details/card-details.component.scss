@@ -1,0 +1,72 @@
+@import "settings",
+		"typography";
+
+.card-name {
+	font-size: 28px;
+	display: flex;
+	align-items: baseline;
+	flex-wrap: wrap;
+	.card-mana-cost {
+		display: flex;
+		flex-wrap: nowrap;
+		vertical-align: baseline;
+		.symbol {
+			width: 20px;
+			height: 20px;
+			margin: 0 2px;
+			display: block;
+		}
+	}
+}
+.card-type {
+	margin: 16px 0;
+}
+.card-set {
+	display: flex;
+	align-items: center;
+	.card-set-link {
+		display: flex;
+		align-items: baseline;
+	}
+	.card-set-date {
+		display: flex;
+		align-items: baseline;
+	}
+	.card-set-symbol {
+		width: 16px;
+		height: 16px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.card-set-name {
+		margin-left: 4px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+.card-text {
+	br {
+		display: block;
+		line-height: 150%;
+		content: '';
+		margin-bottom: $spacing;
+	}
+}
+.card-power-toughness {
+	box-shadow: $shadow, inset $shadow;
+	padding: 4px 12px;
+	display: inline-block;
+	border-radius: 999px;
+	font-weight: bold;
+	border: 2px solid white;
+	font-size: 18px;
+	margin-top: 0;
+}
+.card-artist {
+	margin-top: 0;
+	margin-bottom: 0;
+	span {
+		@extend .subheading;
+		display: block;
+	}
+}

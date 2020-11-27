@@ -1,0 +1,27 @@
+fa-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	svg.svg-inline--fa {
+		display: block;
+		height: auto;
+	}
+}
+svg {
+	transition: $transition;
+	max-height: 100%;
+	max-width: 100%;
+	flex: 1 0 0;
+	&.fa-plus,
+	&.fa-minus,
+	&.fa-times,
+	&.fa-caret-up,
+	&.fa-caret-right,
+	&.fa-caret-down,
+	&.fa-thunderstorm,
+	&.fa-caret-left {
+		.fa-secondary {
+			opacity: 1 !important;
+		}
+	}
+}

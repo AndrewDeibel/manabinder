@@ -1,0 +1,38 @@
+@import "settings";
+
+// Inputs
+input {
+    transition: $transition;
+    outline: none;
+	font-size: $font-size;
+	color: $font-color;
+	$font-family: $font-family;
+
+	// States
+    &:hover, &:focus, &:active {
+        outline: none;
+    }
+}
+
+// Labels
+.label {
+    display: block;
+    margin-bottom: $spacing;
+}
+
+// States
+*:focus, *:active {
+	outline: 0 !important;
+}
+.hover {
+    background: rgba(black, .05);
+}
+.focus {
+    border-color: $primary-color!important;
+    box-shadow: $shadow-focus !important;
+    outline: 0 !important;
+}
+:disabled {
+	opacity: .6;
+	pointer-events: none;
+}

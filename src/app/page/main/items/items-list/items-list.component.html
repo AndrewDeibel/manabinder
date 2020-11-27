@@ -1,0 +1,12 @@
+<div class="items-list" *ngIf="items.length">
+    <ul>
+        <li *ngFor="let item of items">
+			
+			<mb-card-item-list *ngIf="isCard(item)" [card]="item"></mb-card-item-list>
+			<mb-card-item-list *ngIf="isUserCard(item)" [card]="item.card"></mb-card-item-list>
+			<mb-set-item-list *ngIf="isSet(item)" [set]="item"></mb-set-item-list>
+			<mb-artist-item-list *ngIf="isArtist(item)" [artist]="item"></mb-artist-item-list>
+
+		</li>
+    </ul>
+</div>

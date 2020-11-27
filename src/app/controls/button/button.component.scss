@@ -1,0 +1,51 @@
+@import "settings";
+
+.button {
+    padding: 11px 16px;
+    line-height: 14px;
+    border: $border;
+    border-radius: $border-radius;
+    background: $blue;
+	color: white;
+	text-shadow: 0 1px 1px rgba(black, .5);
+	display: flex;
+	align-items: center;
+    box-shadow: $shadow-light, $shadow-top-shine;
+    transition: $transition;
+    position: relative;
+    cursor: pointer;
+	overflow: hidden;
+	font-size: $font-size;
+	outline: 0;
+	&.red {
+		background: #b43636;
+	}
+	&.secondary {
+		background: #eee;
+		color: $font-color;
+		text-shadow: 0 1px 1px rgba(white, .8);
+		&:hover {
+			background: white;
+		}
+	}
+	.icon {
+		fa-icon {
+			width: 16px !important;
+			height: 16px !important;
+			filter: drop-shadow($shadow-icon);
+		}
+		+ .text {
+			margin-left: $spacing;
+		}
+	}
+    &:focus {
+        box-shadow: $shadow-focus;
+    }
+    &:hover {
+        background: mix(white, $blue, 10%);
+	}
+	&:active {
+		box-shadow: $shadow-focus, $shadow-focus-inset;
+		text-shadow: $text-shadow-focus;
+	}
+}

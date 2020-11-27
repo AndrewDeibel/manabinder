@@ -1,0 +1,13 @@
+.game-table {
+	.card {
+		.card-inner {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			img {
+				max-height: 100%;
+			}
+		}
+	}
+}

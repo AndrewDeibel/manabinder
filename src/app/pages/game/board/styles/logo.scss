@@ -1,0 +1,35 @@
+.logo {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	border-radius: $border-radius;
+	position: absolute;
+	bottom: 4%;
+	left: 4%;
+	opacity: .2;
+	img {
+		display: block;
+		border-radius: $border-radius;
+		overflow: hidden;
+		filter: drop-shadow(0 1px 2px black);
+		height: 40px;
+		&.logo-image-small {
+			display: none;
+		}
+	}
+	span {
+		margin: 0 16px;
+		font-size: 24px;
+		color: rgba(white, .9);
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		text-shadow: $text-shadow;
+		@media(max-width: $screen-medium) {
+			font-size: 16px;
+			margin: 0 12px;
+		}
+		@media(max-width: $screen-small) {
+			display: none;
+		}
+	}
+}

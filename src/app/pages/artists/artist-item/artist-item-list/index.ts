@@ -1,0 +1,1 @@
+export * from './artist-item-list.component';

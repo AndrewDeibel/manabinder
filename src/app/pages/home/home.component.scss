@@ -1,0 +1,18 @@
+@import "settings";
+
+#page-home {
+    padding: 128px;
+    position: relative;
+    overflow: hidden;
+    @media (max-width: $screen-medium) {
+        padding: 32px;
+    }
+    .logo {
+        h1 {
+            font-family: $font-family;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: normal;
+        }
+    }
+}

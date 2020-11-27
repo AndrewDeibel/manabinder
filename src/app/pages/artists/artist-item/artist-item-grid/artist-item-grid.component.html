@@ -1,0 +1,15 @@
+<a
+	class="item-grid-artist"
+	[routerLink]="artist.route ? artist.route : []">
+
+	<figure class="artist-image">
+		<div *ngIf="artist.latest_card && artist.latest_card.images" class="img" style="background-image: url({{artist.latest_card.images.art_crop}})"></div>
+	</figure>
+
+	<figcaption>
+		<span class="artist-name bold align-center">
+			{{artist.name}}
+		</span>
+	</figcaption>
+
+</a>

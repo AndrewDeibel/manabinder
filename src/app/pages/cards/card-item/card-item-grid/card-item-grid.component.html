@@ -1,0 +1,34 @@
+<a
+	class="card-grid"
+	[routerLink]="card.route ? card.route : []">
+
+	<figure
+		class="card-image"
+		[class.placeholder]="card.no_images"
+		*ngIf="card.images">
+
+		<div *ngIf="art" class="image-wrapper art">
+			<div class="img-art" style="background-image: url({{card.images.art_crop}});"></div>
+		</div>
+		<div *ngIf="!art" class="image-wrapper {{alphaBorderRadius(card)}}">
+			<img src="{{card.images.normal}}" />
+		</div>
+		<mb-menu [menu]="card.itemsMenu"></mb-menu>
+
+	</figure>
+
+	<aside class="card-information">
+		<div class="card-name">
+			{{card.name}}
+			<mb-mana-cost [manaCost]="card.mana_cost"></mb-mana-cost>
+		</div>
+		<a routerLink="/sets/{{card.set_code.toLowerCase()}}" *ngIf="card.set_symbol || card.set_name" class="card-set">
+			<img class="set-symbol" src="{{card.set_symbol}}" />
+			<span class="set-name subheading">{{card.set_name}}</span>
+		</a>
+		<div class="card-price" *ngIf="card.price">
+			<span class="price">{{card.price | currency}}</span>
+		</div>
+	</aside>
+
+</a>

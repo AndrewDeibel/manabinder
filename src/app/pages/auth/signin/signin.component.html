@@ -1,0 +1,19 @@
+<form class="padding-large" [formGroup]="form" (ngSubmit)="submit()">
+	<div class="flex vertical padded flex-center">
+		<div>
+			<h1>Sign In</h1>
+		</div>
+		<div>
+			<mb-textbox [formControl]="form.controls.emailControl" [textbox]="textboxEmail"></mb-textbox>
+		</div>
+		<div>
+			<mb-textbox [formControl]="form.controls.passwordControl" [textbox]="textboxPassword"></mb-textbox>
+		</div>
+		<div>
+			<mb-checkbox [formControl]="form.controls.rememberMeControl" [checkbox]="rememberMeCheckbox"></mb-checkbox>
+		</div>
+		<div>
+			<mb-button [button]="buttonSubmit"></mb-button>
+		</div>
+	</div>
+</form>

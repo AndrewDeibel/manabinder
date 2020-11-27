@@ -1,0 +1,61 @@
+@import "settings";
+
+.search {
+    input {
+        border: 1px solid rgba($secondary-color, .4);
+        height: 40px;
+        width: 100%;
+        padding: 0 16px;
+        border-radius: $border-radius;
+        display: block;
+        font-size: 120%;
+        &:focus {
+            box-shadow: $shadow-focus;
+        }
+    }
+    fa-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 16px;
+		color: rgba(black, .8);
+		cursor: pointer;
+    }
+    .autocomplete {
+        input {
+            border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			color: black;
+		}
+		svg {
+			color: black;
+		}
+		mb-menu {
+			left: 0;
+			right: 0;
+			box-shadow: $shadow;
+			position: absolute;
+			border-radius: $border-radius;
+			background: $panel-bg;
+		}
+	}
+	@media (max-width: $screen-medium) {
+		position: static;
+		.autocomplete {
+			input {
+				border-bottom-left-radius: $border-radius;
+				border-bottom-right-radius: $border-radius;
+			}
+			.menu {
+				position: absolute;
+				top: 100%;
+				left: 0;
+				right: 0;
+				box-shadow: $shadow;
+				background: white;
+				max-height: calc(100vh - #{$header-height} - 88px);
+				overflow-y: scroll;
+			}
+		}
+	}
+}

@@ -1,0 +1,4 @@
+<div class="progress" *ngIf="progressBar">
+	<div class="progress-bar" [style.width]="progressBar.value + '%'"></div>
+	<div class="progress-value">{{progressBar.value / 10}}/10</div>
+</div>

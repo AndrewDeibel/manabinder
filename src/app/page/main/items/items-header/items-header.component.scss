@@ -1,0 +1,72 @@
+@import "settings";
+
+#item-header {
+	position: relative;
+	padding: $spacing 0;
+	display: flex;
+	@media (max-width: $max + 64px) {
+		padding: $spacing $spacing * 3;
+	}
+	fa-icon {
+		width: 64px;
+		height: 64px;
+		padding: $spacing * 2;
+		padding-left: 0;
+	}
+	.symbol-wrapper {
+		width: 64px;
+		height: 64px;
+		padding: $spacing;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		img {
+			width: 100%;
+			max-height: 100%;
+
+			// Contrast was not consistent from scryfall
+			filter: contrast(999%);
+			opacity: .8;
+		}
+	}
+	[class^="texture"] {
+		opacity: .5;
+	}
+	.title {
+		margin: 0;
+		text-shadow: $text-shadow-inset;
+	}
+	.price {
+		color: $green;
+		font-weight: bold;
+	}
+	.tags {
+		margin-top: 6px;
+	}
+	@media (max-width: $screen-small) {
+		padding-right: $spacing;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		[class^="texture"] {
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+		}
+		.icon-wrapper, .symbol-wrapper {
+			//display: none;
+			fa-icon {
+				padding: $spacing;
+				width: 40px;
+				height: 40px;
+			}
+		}
+		.cards-menu {
+			display: flex;
+			width: 100%;
+		}
+		.main-header-menu {
+			width: 100%;
+			display: flex;
+			
+		}
+	}
+}

@@ -1,0 +1,25 @@
+<a
+	class="item-list-artist"
+	[routerLink]="artist.route ? artist.route : []">
+
+	<div class="flex padded flex-center box">
+		<div>
+			<figure class="artist-image">
+				<img *ngIf="artist.latest_card" src="{{artist.latest_card.images.art_crop}}" />
+			</figure>
+		</div>
+		<div class="box">
+			<figcaption class="artist-info">
+				<div class="flex padded flex-center">
+					<span class="width-8 artist-name">
+						{{artist.name}}
+					</span>
+					<span class="width-4 artist-total subheading">
+						Cards: {{artist.total_cards}}
+					</span>
+				</div>
+			</figcaption>
+		</div>
+	</div>
+
+</a>

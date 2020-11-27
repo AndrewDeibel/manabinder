@@ -1,0 +1,23 @@
+@import "settings";
+
+.progress {
+	width: 100%;
+	background: white;
+	border: $border;
+	border-radius: $border-radius;
+	height: 16px;
+	position: relative;
+	.progress-bar {
+		background: $primary-color;
+		border-radius: $border-radius - 1px;
+		height: 14px;
+	}
+	.progress-value {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-weight: bold;
+		color: $font-color;
+	}
+}

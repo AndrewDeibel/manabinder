@@ -1,0 +1,18 @@
+<a
+	class="deck-grid"
+	[routerLink]="binder.route ? binder.route : []">
+
+	<figure
+		class="deck-image">
+		<div class="image-wrapper" style="background-image: url({{binder.image}})">
+			<fa-icon icon="folder" *ngIf="!binder.image"></fa-icon>
+		</div>
+	</figure>
+
+	<aside class="deck-information">
+		<div class="deck-name bold">
+			{{binder.name}}
+		</div>
+	</aside>
+
+</a>

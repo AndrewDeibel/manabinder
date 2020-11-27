@@ -1,0 +1,19 @@
+@import "~@angular/cdk/overlay-prebuilt.css";
+
+.ck.ck-toolbar {
+	border-bottom: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	border-top-left-radius: $border-radius !important;
+	border-top-right-radius: $border-radius !important;
+}
+.ck.ck-content {
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-left-radius: $border-radius !important;
+	border-bottom-right-radius: $border-radius !important;
+	min-height: 200px !important;
+}
+.ck {
+	color: $font-color !important;
+}

@@ -1,0 +1,24 @@
+<div id="page-register">
+    <form class="padding-large" [formGroup]="form" (ngSubmit)="submit()">
+        <div class="flex vertical padded flex-center">
+			<div>
+				<h1>Sign Up</h1>
+			</div>
+            <div>
+                <mb-textbox [formControl]="form.controls.emailControl" [textbox]="textboxEmail"></mb-textbox>
+            </div>
+            <div>
+                <mb-textbox [formControl]="form.controls.usernameControl" [textbox]="textboxUsername"></mb-textbox>
+            </div>
+            <div>
+                <mb-textbox [formControl]="form.controls.passwordControl" [textbox]="textboxPassword"></mb-textbox>
+            </div>
+            <div>
+                <mb-textbox [formControl]="form.controls.passwordConfirmControl" [textbox]="textboxConfirmPassword"></mb-textbox>
+            </div>
+            <div>
+                <mb-button [button]="buttonSubmit"></mb-button>
+            </div>
+        </div>
+    </form>
+</div>

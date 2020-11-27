@@ -1,0 +1,32 @@
+.commandZone {
+	z-index: 11;
+	height: 100%;
+	.label {
+		position: absolute;
+		bottom: 100%;
+		right: 0px;
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+		z-index: -1;
+	}
+	.cards-wrapper {
+		box-shadow: $shadow-large;
+		border-top-right-radius: 0;
+		.cards {
+			display: flex;
+			padding: 2.5%;
+			.card {
+				padding: 2.5%;
+				height: 100%;
+				.card-inner {
+					height: 100%;
+					img {
+						height: 100%;
+						transform-origin: bottom right;
+						margin: 0 auto;
+					}
+				}
+			}
+		}
+	}
+}

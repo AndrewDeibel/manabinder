@@ -1,0 +1,17 @@
+@import "settings";
+
+:host {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+.tracker-menu {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-right: $border;
+	border-bottom: $border;
+	border-bottom-right-radius: $border-radius;
+}

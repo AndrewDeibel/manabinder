@@ -1,0 +1,32 @@
+<a
+	class="deck-grid"
+	[routerLink]="deck.route ? deck.route : []">
+
+	<figure
+		class="deck-image">
+		<div *ngIf="!deck.partnerImage1" class="image-wrapper" style="background-image: url({{deck.image}})">
+			<fa-icon icon="folder" *ngIf="!deck.image"></fa-icon>
+		</div>
+		<div *ngIf="deck.partnerImage1" class="partner-image-wrapper-1" style="background-image: url({{deck.partnerImage1}})"></div>
+		<div *ngIf="deck.partnerImage1" class="partner-image-wrapper-2" style="background-image: url({{deck.partnerImage2}})"></div>
+	</figure>
+
+	<aside class="deck-information">
+		<div class="deck-name bold">
+			{{deck.name}}
+		</div>
+		<mb-progress-bar [progressBar]="progressBar"></mb-progress-bar>
+		
+		<mb-tag *ngIf="deck.format" [tag]="tagFormat"></mb-tag>
+
+		<div class="tags" *ngIf="tags.length && false">
+			<div class="flex flex-wrap padded justify-center">
+				<mb-tag *ngIf="deck.format" [tag]="tagFormat"></mb-tag>
+				<div *ngFor="let tag of tags">
+					<mb-tag [tag]="tag"></mb-tag>
+				</div>
+			</div>
+		</div>
+	</aside>
+
+</a>

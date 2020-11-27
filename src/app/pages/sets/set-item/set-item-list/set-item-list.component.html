@@ -1,0 +1,28 @@
+<a
+	class="item-list-set"
+	[routerLink]="set.route ? set.route : []">
+
+	<div class="flex padded flex-center box">
+		<div>
+			<figure class="set-symbol">
+				<img src="{{set.symbol}}" />
+			</figure>
+		</div>
+		<div class="box">
+			<figcaption class="set-info">
+				<div class="flex padded flex-center">
+					<span class="width-6 set-name">
+						{{set.name}}
+					</span>
+					<span class="width-3 set-release-date subheading">
+						Released: {{set.release_date | date}}
+					</span>
+					<span class="width-3 set-total-cards subheading">
+						Cards: {{set.total_cards}}
+					</span>
+				</div>
+			</figcaption>
+		</div>
+	</div>
+
+</a>

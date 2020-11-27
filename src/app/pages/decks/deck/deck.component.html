@@ -1,0 +1,43 @@
+<div class="small-square deck">
+	<mb-items-header [itemsHeader]="cards.items.header"></mb-items-header>
+
+	<div class="border-bottom">
+		<div class="max">
+			<mb-menu id="deckTabs" [menu]="menu"></mb-menu>
+		</div>
+	</div>
+
+	<div class="border-bottom">
+		<div class="max">
+			<div class="commanders-wrapper" *ngIf="deck && deck.commanders.length && !showDescription">
+				<div class="margin-bottom">
+					<div class="flex padded align-middle">
+						<fa-icon icon="dragon"></fa-icon>
+						<div><p>Commander(s)</p></div>
+					</div>
+				</div>
+				<div class="commanders flex padded">
+					<mb-card-item-grid [card]="deck.commanders[0].card"></mb-card-item-grid>
+					<mb-card-item-grid *ngIf="deck.commanders.length > 1" [card]="deck.commanders[1].card"></mb-card-item-grid>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<mb-cards *ngIf="showCards" [cards]="cards" (outputGetCards)="getCards()"></mb-cards>
+
+	<div class="max">
+		<div *ngIf="showDescription" class="padding-large">
+			<div *ngIf="deck.short_description" [innerHTML]="deck.short_description"></div>
+			<div class="tags" *ngIf="tags.length">
+				<div class="label">Tags</div>
+				<div class="flex flex-wrap padded">
+					<div *ngFor="let tag of tags">
+						<mb-tag [tag]="tag"></mb-tag>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

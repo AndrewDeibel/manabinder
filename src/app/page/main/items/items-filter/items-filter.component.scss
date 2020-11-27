@@ -1,0 +1,57 @@
+@import "settings";
+
+.col-display {
+	mb-menu {
+		ul {
+			li {
+				a {
+					.text {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: $screen-small) {
+	.col-search {
+		width: 100%;
+		min-width: calc(100% - #{$spacing});
+		> div {
+			max-width: 100% !important;
+		}
+	}
+	.col-display {
+		width: 100%;
+		> div {
+			width: 100%;
+			display: block;
+		}
+		mb-menu {
+			width: 100%;
+			display: block;
+			ul {
+				display: flex;
+				li {
+					flex: 1;
+					a {
+						justify-content: center;
+						.text {
+							flex: initial !important;
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+	.col-sort {
+		width: 100%;
+		.col-sort-by {
+			width: 50%;
+		}
+		.col-sort-direction {
+			width: 50%;
+		}
+	}
+}

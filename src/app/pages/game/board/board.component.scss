@@ -1,0 +1,169 @@
+@import "settings";
+$ch: percentage(3.5/13.5);
+$cw: $ch * $card-ratio;
+@import "styles/playmat.scss",
+		"styles/hand.scss",
+		"styles/battlefield.scss",
+		"styles/library.scss",
+		"styles/graveyard.scss",
+		"styles/exile.scss",
+		"styles/shuffle.scss",
+		"styles/overlay.scss",
+		"styles/logo.scss",
+		"styles/counter.scss",
+		"styles/command.scss",
+		"styles/card.scss";
+
+// Board
+.board {
+	position: relative;
+	
+	// Empty
+	.empty {
+		height: 100%;
+		position: relative;
+		top: -100%;
+		z-index: 2;
+		pointer-events: none;
+		span {
+			font-size: 12px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			opacity: .5;
+		}
+	
+		img {
+			height: 100%;
+			max-width: none;
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+			border-radius: $border-radius-card;
+		}
+	}
+	
+	// Label
+	.label {
+		display: none;
+		padding: 2px 6px;
+		text-transform: uppercase;
+		font-size: 10px;
+		background: rgb(white, .5);
+		box-shadow: $shadow;
+		margin-bottom: 0;
+		font-weight: bold;
+		z-index: 2;
+		text-align: center;
+		white-space: nowrap;
+	}
+}
+
+// Cards wrapper
+.cards-wrapper {
+	height: 100%;
+	z-index: 3;
+	position: relative;
+	background: rgb(white, .2);
+	border-radius: $border-radius-card; 
+	box-shadow: $shadow;
+	.cards {
+		height: 100%;
+		position: relative;
+		z-index: 4;
+
+		// Fixes bug in cdk where dragging preview on top of cards
+		// Would move them with it
+		&.cdk-drop-list-dragging {
+			pointer-events: none;
+			.card {
+				pointer-events: none;
+			}
+		}
+		.card {
+			&.cdk-drag-placeholder {
+				opacity: .2;
+			}
+		}
+	}
+}
+
+// Card
+.game-table .card, .cdk-drag {
+	.card-inner {
+		transition: $transition;
+	}
+	&.tapped .card-inner {
+		transform: rotate(90deg);
+	}
+	.card-back {
+		transform: rotateY(180deg);
+		backface-visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	&.flipped {
+		.card-front {
+			transform: rotateY(180deg);
+			backface-visibility: hidden;
+		}
+		.card-back {
+			transform: rotateY(0);
+		}
+	}
+	&.rotated {
+		transform: rotate(180deg);
+	}
+	img {
+		box-shadow: $shadow;
+		display: block;
+		border-radius: $border-radius-card;
+		cursor: pointer;
+		transition: $transition;
+		position: relative;
+	}
+	&:not(.cdk-drag-preview):hover {
+		z-index: 9999;
+		img {
+			box-shadow: $shadow-focus;
+		}
+	}
+	&.cdk-drag-preview {
+		z-index: 9999 !important;
+		opacity: .4;
+		img {
+			box-shadow: $shadow-focus, $shadow-large;
+		}
+	}
+}
+
+.txt-game-chat {
+	background: rgba(black, .4);
+	color: rgba(white, .8);
+}
+
+.turn-phases {
+	position: absolute;
+    top: 1%;
+	left: 19%;
+	z-index: 10;
+	background: rgba(black, .8);
+	border-radius: $border-radius;
+	display: flex;
+	nav ul li a {
+		@media (max-width: $screen-small), (max-height: $screen-small) {
+			padding: 4px 10px !important;
+		}
+		.text {
+			@media (max-width: $screen-medium), (max-height: $screen-medium) {
+				display: none;
+			}
+		}
+	} 
+	
+	@media (max-width: $screen-medium), (max-height: $screen-medium) {
+		left: 26%;
+	}
+}

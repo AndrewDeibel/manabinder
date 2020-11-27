@@ -1,0 +1,16 @@
+<button class="button {{button.classes}}"
+	[type]="button.type"
+	[style.width]="button.width"
+	[disabled]="button.disabled || disabled ? true : null"
+	(click)="button.click ? button.click() : null"
+	[routerLink]="button.route">
+	
+    <span class="icon" *ngIf="button.icon">
+        <fa-icon [icon]="button.icon"></fa-icon>
+	</span>
+	
+    <span class="text" *ngIf="button.text">
+        {{button.text}}
+	</span>
+	
+</button>

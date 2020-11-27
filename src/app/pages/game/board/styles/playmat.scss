@@ -1,0 +1,40 @@
+.playmat-wrapper {
+	// position: absolute !important;
+	// top: 2%;
+	// left: 2%;
+	// right: 2%;
+	// bottom: 2%;
+	text-align: center;
+	position: relative;
+	
+	.playmat {
+		// display: inline-block;
+		box-shadow: $shadow-large;
+		border-radius: $border-radius-playmat;		
+		position: relative;
+
+		.image-ratio {
+			max-height: 100%;
+			opacity: 0;
+			pointer-events: none;
+			visibility: hidden;
+			display: block;
+		}
+	}
+
+	[class*='texture'] {
+		border-radius: $border-radius-playmat;
+	}
+
+	.playmat-art {
+		border-radius: $border-radius-playmat;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-size: cover;
+		background-position: center;
+		z-index: 0;
+	}
+}

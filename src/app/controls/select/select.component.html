@@ -1,0 +1,14 @@
+<label *ngIf="select.label" class="label">{{select.label}}</label>
+<div class="select">
+	<fa-icon icon="caret-down"></fa-icon>
+	<select [(ngModel)]="value" (change)="change()" class="{{select.classes ? select.classes : ''}}">
+		<option *ngFor="let option of select.options" [value]="option.value">
+			{{option.text}}
+		</option>
+		<optgroup *ngFor="let optionGroup of select.optionGroups" [label]="optionGroup.label">
+			<option *ngFor="let option of optionGroup.options" [value]="option.value">
+				{{option.text}}
+			</option>
+		</optgroup>
+	</select>
+</div>

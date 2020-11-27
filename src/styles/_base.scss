@@ -1,0 +1,81 @@
+// Body
+body {
+    padding-top: $header-height;
+    min-width: $min;
+	height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+	flex-direction: column;
+    font-family: $font-family;
+    font-size: $font-size;
+    color: $font-color;
+}
+
+// Min/max
+.min {
+	min-width: $min;
+}
+.max {
+    max-width: $max;
+    margin: 0 auto;
+}
+
+// Cursors
+.pointer {
+	cursor: pointer;
+}
+
+// Shadow
+.shadow {
+    box-shadow: $shadow;
+}
+.shadow-light {
+	box-shadow: $shadow-light;
+}
+
+// Z index
+@for $i from 1 through 20 {
+	.z-#{$i} {
+		z-index: $i;
+	}
+}
+
+// Position
+.relative {
+	position: relative;
+}
+
+// Backgrounds
+.bg {
+	background: white;
+}
+.bg-header {
+	background: $header-bg;
+}
+
+// Gradient
+.texture-gradient {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	pointer-events: none;
+    &:before {
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(white, .20), transparent);
+        z-index: 2;
+    }
+	+ *:not([class^="texture-"]) {
+		position: relative;
+		z-index: 2;
+	}
+}

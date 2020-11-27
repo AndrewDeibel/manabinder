@@ -1,0 +1,161 @@
+.overlay-card, .overlay-cards, .overlay-dice, .overlay-coin {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(black, .6);
+	background: radial-gradient(rgba(#333, .6), rgba(#333, .8));
+	pointer-events: none;
+	opacity: 0;
+	z-index: 99;
+	transition: $transition;
+	border-radius: $border-radius-playmat;
+	&:active {
+		transition: none;
+	}
+	&.active {
+		opacity: 1;
+		pointer-events: all;
+	}
+}
+
+.overlay-card {
+	cursor: pointer;
+	.card {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		height: 80%;
+		.card-inner img {
+			box-shadow: $shadow-large;
+		}
+	}
+}
+
+.overlay-cards {
+	display: flex;
+	flex-direction: column;
+	padding: $spacing;
+	align-items: center;
+	top: 22%;
+	bottom: 22%;
+	left: 25%;
+	right: 25%;
+	box-shadow: $shadow-large;
+	border-radius: $border-radius;
+	.overlay-cards-inner {
+		max-height: 100%;
+		max-width: 100%;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		.overlay-cards-header {
+			padding-bottom: $spacing;
+			display: flex;
+			cursor: move;
+			mb-textbox {
+				display: flex;
+				border-radius: $border-radius;
+				box-shadow: $shadow;
+			}
+			mb-button {
+				border-radius: $border-radius;
+				box-shadow: $shadow;
+			}
+		}
+		.overlay-cards-body {
+			flex: 1 0 0;
+		}
+	}
+	.cards-wrapper {
+		width: 100%;
+		border-radius: $border-radius;
+		overflow: hidden;
+		flex: 1;
+		background: rgba(#222, .4);
+		box-shadow: $shadow-bottom-shine;
+		.cards {
+			padding: $spacing;
+			overflow-x: scroll;
+			font-size: 0;
+			text-align: center;
+			box-shadow: $shadow-inset-large;
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+
+			&::-webkit-scrollbar {
+				width: 14px;
+				height: 14px;
+			}
+			
+			&::-webkit-scrollbar-thumb {
+				background: linear-gradient(#bf4b28, #b36b19);
+				border-radius: 14px;
+				box-shadow: inset 2px 2px 2px rgba(white, .2), inset -2px -2px 2px rgba(black, .2);
+			}
+			
+			&::-webkit-scrollbar-track {
+				background: linear-gradient(90deg, rgba(black, .6), rgba(black, .4));
+			}
+
+			.card {
+				padding: $spacing;
+				min-width: 31.5%;
+				max-width: 31.5%;
+				.card-inner {
+					img {
+
+					}
+				}
+			}
+		}
+	}
+}
+
+.overlay-dice {
+	display: flex;
+	flex-direction: column;
+	padding: $spacing;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	text-align: center;
+	font-size: 72px;
+	font-weight: bold;
+	div {
+		display: flex;
+		flex-direction: column;
+		fa-icon {
+			width: 72px;
+			height: 72px;
+		}
+		span {
+		}
+	}
+}
+
+.overlay-coin {
+	display: flex;
+	flex-direction: column;
+	padding: $spacing;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	text-align: center;
+	font-size: 72px;
+	font-weight: bold;
+	div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		fa-icon {
+			width: 72px;
+			height: 72px;
+		}
+		span {
+		}
+	}
+}

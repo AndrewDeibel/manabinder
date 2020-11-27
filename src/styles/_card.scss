@@ -1,0 +1,31 @@
+// Text symbol
+.inline-symbol {
+	width: .85em;
+	height: .85em;
+	vertical-align: baseline;
+	margin: 0 1px;
+}
+
+// Mana cost
+.mana-cost {
+	display: flex;
+	flex-wrap: nowrap;
+	.inline-symbol {
+		width: 14px;
+		height: 14px;
+	}
+}
+
+// Card group
+.card-group {
+	min-width: percentage(1/7);
+	@media (max-width: $screen-medium) {
+		width: percentage(1/3);
+	}
+	@media (max-width: $screen-small) {
+		width: percentage(1/2);
+	}
+	@media (max-width: $screen-xsmall) {
+		width: percentage(1/1);
+	}
+}

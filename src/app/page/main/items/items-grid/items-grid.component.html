@@ -1,0 +1,14 @@
+<div class="items-grid" *ngIf="items.length">
+    <ul>
+        <li *ngFor="let item of items">
+
+			<mb-set-item-grid *ngIf="isSet(item)" [set]="item"></mb-set-item-grid>
+			<mb-deck-item-grid *ngIf="isDeck(item)" [deck]="item"></mb-deck-item-grid>
+			<mb-card-item-grid *ngIf="isCard(item)" [card]="item"></mb-card-item-grid>
+			<mb-card-item-grid *ngIf="isUserCard(item)" [card]="item.card"></mb-card-item-grid>
+			<mb-artist-item-grid *ngIf="isArtist(item)" [artist]="item"></mb-artist-item-grid>
+			<mb-binder-item-grid *ngIf="isBinder(item)" [binder]="item"></mb-binder-item-grid>
+
+        </li>
+    </ul>
+</div>

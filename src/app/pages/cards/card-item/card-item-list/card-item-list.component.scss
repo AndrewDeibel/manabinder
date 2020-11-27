@@ -1,0 +1,149 @@
+@import "settings",
+		"typography";
+
+.item {
+    display: flex;
+    padding: $spacing;
+    align-items: center;
+    position: relative;
+    transition: $transition;
+    cursor: pointer;
+    &:hover {
+		background: rgba(black, .05);
+    }
+    &:active {
+		border-color: $primary-color!important;
+		box-shadow: $shadow-focus !important;
+		outline: 0 !important;
+    }
+    .card-image {
+        position: relative;
+        .image-wrapper {
+            width: 48px;
+            height: 48px;
+            overflow: hidden;
+            border-radius: 4px;
+            position: relative;
+            img {
+                position: absolute;
+                height: 100%;
+                top: 50%;
+                left: 50%;
+                max-width: none;
+                transform: translate(-50%, -50%);
+            }
+        }
+        &.placeholder img {
+            transform: translate(-50%, -50%) scale(1.4);    
+        }
+        padding-right: $spacing;
+        .zoom-image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: $shadow;
+            transition: $transition;
+            z-index: 99;
+            overflow: hidden;
+            border-radius: 4%;
+            img {
+                height: 48px;
+                max-width: none;
+                display: block;
+            }
+        }
+        &:hover {
+            .zoom-image-wrapper {
+                opacity: 1;
+                img {
+                    height: 400px;
+                }
+            }
+        }
+    }
+    .card-information {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        .card-name {
+            font-size: 18px;
+            margin: 0;
+            color: $primary-color;
+            font-weight: bold;
+            padding-right: $spacing;
+            width: 50%;
+            display: flex;
+			align-items: center; 
+			.card-mana-cost {
+				margin-left: $spacing;
+			}
+        }
+        .card-set {
+            display: flex;
+            align-items: center;
+            width: 25%;
+            padding-left: $spacing;
+            padding-right: $spacing;
+            .set-symbol {
+                width: 24px;
+                height: 24px;
+            }
+            .set-name {
+                @extend .subheading;
+                padding-left: $spacing;
+            }
+        }
+        .card-price {
+            width: 25%;
+            color: $green;
+            font-weight: bold;
+            font-size: 14px;
+			text-align: center;
+			display: flex;
+			.price {
+				margin-left: $spacing;
+			}
+        }
+        @media (max-width: $screen-medium) {
+            flex-direction: column;
+            .card-name {
+                width: 100%;
+                .card-mana-cost {
+                    img {
+                        width: 12px;
+                        height: 12px;
+                    }
+                }
+            }
+            .card-set {
+                width: 100%;
+                padding: 0;
+                .set-symbol {
+                    width: 14px;
+                    height: 14px;
+                }
+            }
+            .card-price {
+                width: 100%;
+				text-align: left;
+				.price {
+					margin-left: 0;
+				}
+            }
+        }
+    }
+    @media (max-width: $screen-medium) {
+        .card-information {
+            .card-name {
+                font-size: 16px;
+            }
+        }
+    }
+    @for $i from 1 through 50 {
+        &:nth-child(#{50 - $i}) {
+            z-index: $i;
+        }
+    }
+}

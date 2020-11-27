@@ -1,0 +1,33 @@
+<!-- Footer -->
+<div id="main-footer" class="pager padding relative round-bottom border-top z-1">
+	<div class="max">
+		<div class="flex padded flex-center">
+
+			<!-- Page size -->
+			<div class="width-4">
+				<div class="flex">
+					<mb-select *ngIf="itemsFooter.selectPageSize" [select]="itemsFooter.selectPageSize"></mb-select>
+				</div>
+			</div>
+
+			<!-- Pages -->
+			<div class="width-4 flex justify-center">
+				<div class="flex padded" *ngIf="itemsFooter.totalPages > 1">
+					<mb-button [disabled]="isPrevDisabled()" [button]="itemsFooter.buttonPrev"></mb-button>
+					<mb-textbox [textbox]="itemsFooter.textboxPage"></mb-textbox>
+					<mb-button [disabled]="isNextDisabled()" [button]="itemsFooter.buttonNext"></mb-button>
+				</div>
+			</div>
+
+			<!-- Total -->
+			<div class="width-4 align-right">
+				<div class="subheading">
+					Page 
+					{{itemsFooter.page}}
+					of
+					{{itemsFooter.totalPages}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

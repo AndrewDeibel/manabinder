@@ -1,0 +1,86 @@
+// Shuffle
+$loader-delay: 200ms;
+$loader-speed: $loader-delay * 5;
+$card-width: 100%;
+$card-angle: 8deg;
+$card-shift: 20px;
+$card-count: 5;
+$card-frame-percentage: 100/$card-count;
+$position1: translateX(#{-$card-shift * 2}) rotate(#{-$card-angle * 2}); // Start of hand
+$position2: translateX(#{-$card-shift * 1}) rotate(#{-$card-angle * 1});
+$position3: translateX(#{$card-shift * 0}) rotate(#{-$card-angle * 0});
+$position4: translateX(#{$card-shift * 1}) rotate(#{$card-angle * 1});
+$position5: translateX(#{$card-shift * 8}) rotate(#{$card-angle * 6}); // Flip out
+$position6: translateX(#{-$card-shift * 2}) rotate(#{-$card-angle * 2}); // Back of hand
+@keyframes card {
+	#{$card-frame-percentage * 0 + "%"} {transform: $position1; z-index: 4}
+	#{$card-frame-percentage * 1 + "%"} {transform: $position2; z-index: 6}
+	#{$card-frame-percentage * 2 + "%"} {transform: $position3; z-index: 8}
+	#{$card-frame-percentage * 3 + "%"} {transform: $position4; z-index: 10}
+	#{$card-frame-percentage * 4 + "%"} {transform: $position5; z-index: 12}
+	#{$card-frame-percentage * 5 + "%"} {transform: $position6; z-index: 2}
+}
+.shuffle-container{
+	position: absolute;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(white, .8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: $transition;
+	opacity: 0;
+	pointer-events: none;
+}
+.shuffle-cards {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+.shuffle-card {
+	width: 100%;
+	font-size:22px;
+	height: 100%;
+	border-radius: $border-radius-card;
+	left: 0;
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation-iteration-count: infinite;
+	animation-duration: $loader-speed;
+	img {
+		border-radius: $border-radius-card;
+		height: 100%;
+		width: 100%;
+	}
+
+	&.card-1 {
+		z-index: 12;
+		animation-name: card;
+	}
+	&.card-2 {
+		z-index: 10;
+		animation-name: card;
+		animation-delay: $loader-delay * 1;
+	}
+	&.card-3 {
+		z-index: 8;
+		animation-name: card;
+		animation-delay: $loader-delay * 2;
+	}
+	&.card-4 {
+		z-index: 4;
+		animation-name: card;
+		animation-delay: $loader-delay * 3;
+	}
+	&.card-5 {
+		z-index: 2;
+		animation-name: card;
+		animation-delay: $loader-delay * 4;
+	}
+}

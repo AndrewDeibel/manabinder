@@ -1,0 +1,37 @@
+<div class="textbox-wrapper">
+	<label *ngIf="textbox.label" class="label">{{textbox.label}}</label>
+	<input
+		*ngIf="!textbox.colorPicker"
+		#textboxEl
+		[style.width]="textbox.width ? textbox.width + 'px' : null"
+		placeholder="{{textbox.placeholder ? textbox.placeholder : null}}"
+		type="{{textbox.type}}"
+		class="textbox {{textbox.classes}}"
+		(keydown.enter)="_keydownEnter()"
+		(change)="_change()"
+		[min]="textbox.min"
+		[max]="textbox.max"
+		[disabled]="textbox.disabled ? textbox.disabled : null"
+		[(ngModel)]="value"
+	/>
+	<input
+		*ngIf="textbox.colorPicker"
+		[style.width]="textbox.width ? textbox.width + 'px' : null"
+		placeholder="{{textbox.placeholder ? textbox.placeholder : null}}"
+		type="{{textbox.type}}"
+		class="textbox {{textbox.classes}}"
+		(keydown.enter)="_keydownEnter()"
+		(change)="_change()"
+		[min]="textbox.min"
+		[max]="textbox.max"
+		[disabled]="textbox.disabled ? textbox.disabled : null"
+		[(ngModel)]="value"
+		[(colorPicker)]="textbox.value"
+		(colorPickerChange)="_colorPickerChange($event)"
+		[cpOutputFormat]="'hex'"
+	/>
+	<fa-icon (click)="_clickIcon()" *ngIf="textbox.icon && (!textbox.clearable || !textbox.value.length)" [icon]="textbox.icon"></fa-icon>
+	<fa-icon (click)="clear()" *ngIf="textbox.colorPicker && textbox.clearable && textbox.value.length" icon="times"></fa-icon>
+</div>
+
+<mb-alert *ngIf="alert" [alert]="alert"></mb-alert>

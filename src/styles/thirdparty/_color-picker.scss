@@ -1,0 +1,17 @@
+@import "settings";
+
+.color-picker {
+	border: $border;
+	border-radius: $border-radius;
+	box-shadow: $shadow;
+	.hex-text .box input {
+		border-radius: $border-radius;
+	}
+	.hue {
+		border-radius: $border-radius;
+	}
+	.saturation-lightness {
+		border-top-left-radius: $border-radius - 2px;
+		border-top-right-radius: $border-radius - 2px;
+	}
+}

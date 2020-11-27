@@ -1,0 +1,32 @@
+<!-- Filters -->
+<div *ngIf="itemsFilter" id="cards-filters" class="padding-left border-bottom padding-bottom padding-right padding-top relative z-2">
+	<div class="max">
+		<div class="flex padded flex-center flex-wrap">
+
+			<!-- Search -->
+			<div class="box col-search">
+				<div style="max-width: 360px;">
+					<mb-textbox [textbox]="itemsFilter.textboxSearch"></mb-textbox>
+				</div>
+			</div>
+
+			<!-- Sort by/direction -->
+			<div class="col-sort" *ngIf="itemsFilter.showSort">
+				<div class="flex padded">
+					<mb-select class="col-sort-by" *ngIf="itemsFilter.selectSortBy" [select]="itemsFilter.selectSortBy"></mb-select>
+					<mb-select class="col-sort-direction" *ngIf="itemsFilter.selectSortDirection" [select]="itemsFilter.selectSortDirection"></mb-select>
+				</div>
+			</div>
+
+			<!-- Diplay mode -->
+			<div
+				*ngIf="itemsFilter.menuDisplayMode && itemsFilter.menuDisplayMode.items.length > 1"
+				class="col-display flex justify-end">
+				<div>
+					<mb-menu [menu]="itemsFilter.menuDisplayMode"></mb-menu>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>

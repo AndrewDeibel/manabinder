@@ -1,0 +1,87 @@
+<div class="game-table-wrapper">
+	<div class="game-sidebar" [class.active]="showSidebar">
+		<mb-button id="buttonToggleSidebar" [button]="buttonToggleSidebar"></mb-button>
+		<div class="max">
+			<div class="game-sidebar-inner" *ngIf="gameTable && gameTable.players && gameTable.players.length">
+				<div class="game-details-wrapper">
+					<div class="game-details">
+						<div class="game-details-inner" *ngIf="gameTable && gameTable.players.length">
+							<div class="game-title">{{gameTable.players[0].deck.name}}</div>
+							<div class="game-subtitle subheading" *ngIf="false">$0.00 max - X PWR</div>
+						</div>
+						<mb-menu [menu]="menuGame"></mb-menu>
+					</div>
+				</div>
+				<div class="player-details-wrapper" *ngIf="false">
+					<div class="player-details">
+						<div class="players-title">Players - Turn {{gameTable.turnCount}}</div>
+						<div class="players">
+							<div class="flex padded vertical">
+								<div class="col xlarge-12" *ngFor="let player of gameTable.players">
+									<div class="player">
+										<div class="flex padded flex-center">
+											<div class="lifetotal">
+												<div class="heart-wrapper">
+													<svg class="heart-bg" viewBox="0 0 32 29.6">
+														<path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+														c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+													</svg> 
+													<svg class="heart" viewBox="0 0 32 29.6">
+														<style type="text/css">
+															.heartGradient{fill:url(#MyGradient)}
+														</style>
+														<defs>
+															<linearGradient id="MyGradient" x1="0" x2="0" y1="0" y2="1">
+																<stop [attr.offset]="100 - ((player.lifeTotal / gameTable.startingLifeTotal) * 100) - 1 + '%'" stop-color="#B43D3D" stop-opacity="0" />
+																<stop [attr.offset]="100 - ((player.lifeTotal / gameTable.startingLifeTotal) * 100) + '%'" stop-color="#B43D3D" />
+																<stop offset="95%" stop-color="#B43D3D" />
+															</linearGradient>
+														</defs>
+														<path class="heartGradient" d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+														c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+													</svg>
+													<span>{{player.lifeTotal}}</span>
+												</div>
+											</div>
+											<div class="name">{{player.name}}</div>
+											<div class="deck">{{player.deck.name}}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="game-toolbar-wrapper">
+					<div class="game-toolbar">
+						<div class="toolbar-title">Toolbar</div>
+						<mb-menu [menu]="menuSidebar"></mb-menu>
+					</div>
+				</div>
+				<div class="game-log-wrapper">
+					<div class="game-log">
+						<div class="logs">
+							<ul>
+								<li *ngFor="let log of gameTable.logs">{{log}}</li>
+							</ul>
+						</div>
+						<div class="new-message">
+							<mb-textbox [textbox]="textboxNewMessage"></mb-textbox>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="game-main">
+		<div class="game-table" *ngIf="gameTable">
+			<div (window:resize)="onResize()"
+				[class.active]="player.active"
+				class="game-board-wrapper"
+				*ngFor="let player of gameTable.players">
+				<mb-board [gameBoard]="player.gameBoard" (gameUpdate)="onGameUpdate($event)"></mb-board>
+			</div>
+		</div>
+	</div>
+</div>
+<mb-loader [dark]="true" [active]="loading"></mb-loader>

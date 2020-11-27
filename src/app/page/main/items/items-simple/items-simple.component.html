@@ -1,0 +1,21 @@
+<div class="card-groups-wrapper">
+	<div class="flex padded flex-wrap card-groups">
+		<div class="box card-group" *ngFor="let cardGroup of cardGroups">
+			<div class="card-group-name">
+				{{cardGroup.title}}
+				({{cardGroup.count}})
+			</div>	
+			<div class="flex padded vertical">
+				<div *ngFor="let card of cardGroup.cards" class="card">
+					<span class="count" *ngIf="card.count && card.count > 1">
+						{{card.count}}
+					</span>
+					<span class="name">
+						{{card.name}}
+					</span>
+					<mb-menu [menu]="card.itemsMenu"></mb-menu>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

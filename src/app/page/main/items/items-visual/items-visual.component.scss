@@ -1,0 +1,84 @@
+@import "settings";
+
+.card-visual {
+	max-width: 300px;
+	&:not(:last-child) {
+		margin-bottom: -125%;
+	}
+	mb-menu {
+		position: absolute;
+		//z-index: 10;
+		top: -5px;
+		right: -2px;
+		opacity: 0;
+	}
+}
+.card-visual-image-wrapper {
+	cursor: pointer;
+	position: relative;
+	&:hover {
+		.visual-hover {
+			opacity: 1;
+			transform: scale(1.1);
+		}
+		.count {
+			z-index: 13;
+			transform: scale(1.1);
+			top: 38px;
+			left: auto;
+			right: -1px;
+		}
+		mb-menu {
+			z-index: 14;
+			opacity: 1;
+		}
+	}
+}
+.card-visual-image-hover {
+	position: absolute;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	pointer-events: none;
+	transition: $transition;
+	z-index: 12;
+}
+.card-groups-wrapper {
+	padding: $spacing;
+	margin: $spacing 0;
+	.card-groups {
+		@media (max-width: $screen-medium) {
+			flex-wrap: wrap;
+		}
+		.card-group {
+			margin: $spacing 0;
+		}
+	}
+	.card-group-header {
+		padding-bottom: $spacing;
+		fa-icon {
+			font-size: 14px;
+			padding-right: $spacing / 2;
+		}
+	}	
+	.card-group-count {
+		opacity: .6;
+		font-weight: bold;
+		font-size: 13px;
+		padding-left: $spacing;
+		padding-top: 11px;
+	}
+}
+.count {
+    position: absolute;
+    z-index: 11;
+    top: 2px;
+    right: 2px;
+    background: white;
+	line-height: 18px;
+	font-size: 16px;
+    padding: 0px 4px;
+	border-radius: $border-radius;
+	box-shadow: $shadow;
+	pointer-events: none;
+}

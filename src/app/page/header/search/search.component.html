@@ -1,0 +1,10 @@
+<div class="search">
+	<div class="{{menuCardsShow ? 'autocomplete bg' : ''}}">
+		<div class="relative">
+			<input #textboxEl (click)="click()" (clickOutside)="clickOutside()" type="text" placeholder="Search..." [(ngModel)]="query" (keyup)="keyup($event)" (keydown.enter)="search()" />
+			<fa-icon *ngIf="!query.length" icon="search" (click)="search()"></fa-icon>
+			<fa-icon *ngIf="query.length" icon="times" (click)="clear(textboxEl)"></fa-icon>
+		</div>
+		<mb-menu [menu]="menuCards" *ngIf="menuCardsShow"></mb-menu>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+@import "settings";
+
+.items-grid {
+	padding: $spacing / 2;
+	> ul {
+		display: flex;
+		flex-wrap: wrap;
+		> li {
+			display: flex;
+			width: percentage(1/4);
+			@media (max-width: $screen-medium) {
+				width: percentage(1/3);
+			}
+			@media (max-width: $screen-small) {
+				width: percentage(1/2);
+			}
+			@media (max-width: $screen-xsmall) {
+				width: percentage(1/1);
+			}
+			@for $i from 1 through 100 {
+				&:nth-child(#{$i}) {
+					z-index: 100 - $i;
+				}
+			}
+		}
+	}
+}
+.pager {
+    display: flex;
+    justify-content: center;
+}

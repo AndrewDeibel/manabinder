@@ -1,0 +1,33 @@
+<div class="max">
+	<!-- Card -->
+	<article class="card-detail" *ngIf="card">
+
+		<!-- Card image -->
+		<figure class="card-image">
+			<div class="card-image-inner">
+				<img src="{{card.images.large}}" class="img-card-image {{alphaBorderRadius()}}" (click)="cardImageHover = !cardImageHover" />
+				<img src="{{card.images.large}}" (click)="cardImageHover = false" class="img-card-image-hover {{alphaBorderRadius()}} {{cardImageHover ? 'active' : ''}}" />
+				<mb-menu [menu]="card.itemsMenu"></mb-menu>
+			</div>
+			<figcaption class="card-image-footer" *ngIf="footerMenu">
+				<div class="menu-label">
+					Versions
+				</div>
+				<mb-menu [menu]="footerMenu"></mb-menu>
+			</figcaption>
+		</figure>
+
+		<!-- Card information -->
+		<aside class="card-information-wrapper">
+			<div class="card-information-inner"></div>
+			<div class="card-information">
+				<mb-items-header [itemsHeader]="itemsHeader"></mb-items-header>
+				<mb-menu [menu]="menu"></mb-menu>
+				<div class="padding-medium border-top">
+					<router-outlet></router-outlet>
+				</div>
+			</div>
+		</aside>
+		
+	</article>
+</div>

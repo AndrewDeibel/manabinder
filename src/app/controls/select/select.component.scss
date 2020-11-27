@@ -1,0 +1,35 @@
+@import "settings";
+
+.select {
+	position: relative;
+	fa-icon {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: $spacing;
+		pointer-events: none;
+	}
+}
+select {
+	border: $border;
+	height: 40px;
+	padding: $spacing;
+	padding-right: 24px;
+	appearance: none;
+	border-radius: $border-radius;
+	transition: $transition;
+	width: 100%;
+	box-shadow: $shadow-inset;
+	background: white;
+	font-size: $font-size;
+	color: $font-color;
+	outline: 0 !important;
+	&:focus {
+		box-shadow: $shadow-focus, $shadow-focus-inset;
+		outline: 0 !important;
+		border-color: $primary-color;
+	}
+	&:active {
+		outline: 0 !important;
+	}
+}

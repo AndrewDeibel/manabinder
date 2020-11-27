@@ -1,0 +1,36 @@
+<div
+	[class.active]="addCards.active"
+	class="add-cards"
+	*ngIf="addCards">
+
+	<mb-button [button]="buttonOpen"></mb-button>
+
+	<div
+		class="round-top add-cards-inner"
+		[class.round]="!addCards.cards.length || !addCards.active">
+		<div class="flex box padded flex-center">
+			<div class="col-cancel">
+				<mb-button [button]="buttonClose"></mb-button>
+			</div>
+			<div class="box col-search padding-right">
+				<mb-textbox [textbox]="addCards.textboxSearch"></mb-textbox>
+			</div>
+			<div class="padding-left col-quantity-label">
+				<label class="label">Quantity:</label>
+			</div>
+			<div class="padding-left col-quantity">
+				<mb-textbox [textbox]="addCards.textboxQuantity"></mb-textbox>
+			</div>
+		</div>
+	</div>
+	<div class="results" *ngIf="addCards.cards.length && addCards.active">
+		<div class="flex flex-wrap justify-center padded">
+			<div *ngFor="let card of addCards.cards">
+				<img
+					[src]="card.images.large"
+					class="card-image"
+					(click)="clickResult($event, card)" />
+			</div>
+		</div>
+	</div>
+</div>

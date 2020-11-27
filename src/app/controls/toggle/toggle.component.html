@@ -1,0 +1,8 @@
+<label *ngIf="toggle.label">
+	{{toggle.label}}
+</label>
+<label class="toggle">
+	<input [(ngModel)]="value" (change)="change()" type="checkbox" />
+	<span *ngIf="toggle.text" class="text">{{toggle.text}}</span>
+	<span *ngIf="toggle.textChecked" class="textChecked">{{toggle.textChecked}}</span>
+</label>

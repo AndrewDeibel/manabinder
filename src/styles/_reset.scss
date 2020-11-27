@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+html {
+	scroll-behavior: smooth;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+figure {
+    margin: 0;
+}
+img {
+    max-width: 100%;
+}

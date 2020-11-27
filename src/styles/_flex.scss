@@ -1,0 +1,68 @@
+// Flex
+.flex {
+    display: flex;
+
+	// Vertical
+	&.vertical {
+		flex-direction: column;
+	}
+	
+	// Wrap
+	&.flex-wrap {
+		flex-wrap: wrap;
+	}
+	&.flex-nowrap {
+		flex-wrap: nowrap;
+	}
+	
+	// Justification
+	&.justify-center {
+		justify-content: center;
+	}
+	&.justify-end {
+		justify-content: flex-end;
+	}
+
+	// Alignment
+	&.flex-center {
+		align-items: center;
+	}
+	&.flex-baseline {
+		align-items: baseline;
+	}
+	
+}
+
+// Sizes
+.box {
+	flex: 1 0 0;
+    min-width: 0;
+}
+.box-0 {
+	flex: 0 !important;
+}
+
+// Widths
+@for $i from 1 through 12 {
+	.width-#{$i} {
+		width: percentage($i/12);
+	}
+}
+
+// Medium widths
+@media (max-width: $screen-medium) {
+	@for $i from 1 through 12 {
+		.medium-#{$i} {
+			width: percentage($i/12);
+		}
+	}
+}
+
+// Small widths
+@media (max-width: $screen-small) {
+	@for $i from 1 through 12 {
+		.small-#{$i} {
+			width: percentage($i/12);
+		}
+	}
+}

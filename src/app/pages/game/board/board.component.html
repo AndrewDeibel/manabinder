@@ -1,0 +1,339 @@
+<div *ngIf="gameBoard" class="board" cdkDropListGroup>
+	
+	<!-- Menu -->
+	<ng-template #menuBoard let-card>
+		<mb-menu [menu]="gameBoard.menuBoard"></mb-menu>
+	</ng-template>
+
+	<!-- Player -->
+	<mb-player [player]="gameBoard.player" *ngIf="false"></mb-player>
+
+	<!-- Phases -->
+	<mb-menu class="turn-phases" [menu]="menuPhases" *ngIf="false"></mb-menu>
+
+	<!-- Playmat -->
+	<div class="playmat-wrapper">
+		<div class="playmat" [style.background-color]="gameBoard.backgroundColor">
+			<div class="texture-gradient"></div>
+			<img class="image-ratio" src="/assets/board.png" />
+			<div class="playmat-art" style="background-image: url({{gameBoard.art}})"></div>
+
+			<!-- Battlefield -->
+			<div class="battlefield zone"
+				(contextmenu)="onRightClickBattlefield($event)">
+				<div class="cards"
+					#battlefieldList="cdkDropList"
+					cdkDropListSortingDisabled
+					cdkDropListOrientation="horizontal"
+					cdkDropList
+					[cdkDropListData]="gameBoard.battlefield"
+					(cdkDropListDropped)="drop($event)">
+
+					<div cdkDragBoundary=".board"
+						[cdkDragData]="card"
+						(cdkDragMoved)="drag($event, card)"
+						cdkDrag
+						[style.top]="card.y + '%'"
+						[style.left]="card.x + '%'"
+						(click)="gameBoard.tapUntap(card)"
+						class="card {{card.tapped ? 'tapped' : ''}} {{card.flipped ? 'flipped' : ''}} {{card.rotated ? 'rotated' : ''}}"
+						*ngFor="let card of gameBoard.battlefield"
+						(contextmenu)="onRightClickBattlefieldCard($event, card)">
+						<div class="card-inner animated fadeIn">
+							<img class="card-front" [src]="card.card.images.large" />
+							<img class="card-back" src="assets/back.jpg" />
+						</div>
+					</div>
+
+					<div class="counter"
+						cdkDragBoundary=".playmat-wrapper"
+						[cdkDragData]="counter"
+						(cdkDragMoved)="drag($event, counter)"
+						cdkDrag
+						[style.top]="counter.y + '%'"
+						[style.left]="counter.x + '%'"
+						(click)="counter.increment()"
+						*ngFor="let counter of gameBoard.counters"
+						title="{{counter.name}}"
+						(contextmenu)="onRightClickCounter($event, counter)">
+						<div class="counter-inner animated fadeIn"
+							[style.background]="counter.color">
+							<span>{{counter.value}}</span>
+						</div>
+					</div>
+
+					<div class="logo">
+						<img src="/assets/logo/manabinder2.svg" />
+						<span><b>Mana</b> Binder</span>
+					</div>
+					
+				</div>
+				<div class="empty" *ngIf="gameBoard.library.length === 0">
+					Empty
+				</div>
+			</div>
+
+			<!-- Library -->
+			<div class="library zone"
+				(contextmenu)="onRightClickLibrary($event)"
+				(click)="gameBoard.drawCard()">
+
+				<div class="shuffle-container {{gameBoard.shuffling ? 'shuffling': ''}}">
+					<div class="shuffle-cards animated zoomIn">
+						<div class="shuffle-card card-1 animated slideInUp">
+							<img src="/assets/back.jpg" />
+						</div>
+						<div class="shuffle-card card-2 animated slideInUp">
+							<img src="/assets/back.jpg" />
+						</div>
+						<div class="shuffle-card card-3 animated slideInUp">
+							<img src="/assets/back.jpg" />
+						</div>
+						<div class="shuffle-card card-4 animated slideInUp">
+							<img src="/assets/back.jpg" />
+						</div>
+						<div class="shuffle-card card-5 card-white">
+							<img src="/assets/back.jpg" />
+						</div>
+					</div>
+				</div>
+
+				<label class="label" fittext [maxFontSize]="10">Library ({{gameBoard.library.length}})</label>
+				<div class="cards-wrapper">
+					<div class="cards"
+						#libraryList="cdkDropList"
+						cdkDropListSortingDisabled
+						cdkDropList
+						[cdkDropListData]="gameBoard.library"
+						(cdkDropListDropped)="drop($event)">
+						
+						<div cdkDragBoundary=".board"
+							[cdkDragData]="card"
+							(cdkDragMoved)="drag($event, card)"
+							cdkDrag
+							class="card" *ngFor="let card of topLibrary()">
+							<div class="card-inner animated fadeIn">
+								<img src="assets/back.jpg" />
+							</div>
+						</div>
+					</div>
+					<div class="empty">
+						<img src="/assets/back.jpg" />
+						<span>Empty</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Graveyard -->
+			<div class="graveyard zone"
+				(contextmenu)="onRightClickGraveyard($event)">
+				<label class="label" fittext [maxFontSize]="10">Graveyard ({{gameBoard.graveyard.length}})</label>
+				<div class="cards-wrapper">
+					<div class="cards"
+						cdkDropList
+						#graveyardList="cdkDropList"
+						cdkDropListSortingDisabled
+						[cdkDropListData]="gameBoard.graveyard"
+						(cdkDropListDropped)="drop($event)">
+
+						<div class="card" *ngFor="let card of gameBoard.graveyard | slice:gameBoard.graveyard.length-1:gameBoard.graveyard.length; let i=index"
+							cdkDrag
+							cdkDragBoundary=".board"
+							[cdkDragData]="card"
+							(cdkDragMoved)="drag($event, card)">
+
+							<div class="card-inner animated fadeIn">
+								<img [src]="card.card.images.large" />
+							</div>
+						</div>
+					</div>
+					<div class="empty">
+						<img src="/assets/back.jpg" />
+						<span>Empty</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Exile -->
+			<div class="exile zone"
+				(contextmenu)="onRightClickExile($event)">
+				<label class="label" fittext [maxFontSize]="10">Exile ({{gameBoard.exile.length}})</label>
+				<div class="cards-wrapper">
+					<div class="cards"
+						cdkDropList
+						#exileList="cdkDropList"
+						cdkDropListSortingDisabled
+						[cdkDropListData]="gameBoard.exile"
+						(cdkDropListDropped)="drop($event)">
+
+						<div class="card" *ngFor="let card of gameBoard.exile"
+							cdkDrag
+							cdkDragBoundary=".board"
+							[cdkDragData]="card"
+							(cdkDragMoved)="drag($event, card)">
+
+							<div class="card-inner animated fadeIn">
+								<img [src]="card.card.images.large" />
+							</div>
+						</div>
+					</div>
+					<div class="empty">
+						<img src="/assets/back.jpg" />
+						<span>Empty</span>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="hand-command-zone-wrapper">
+
+				<!-- Hand -->
+				<div class="hand zone"
+					(contextmenu)="onRightClickHand($event)">
+					<label class="label" fittext [maxFontSize]="10">Hand ({{gameBoard.hand.length}})</label>
+					<div class="cards-wrapper">
+						<div class="cards"
+							*ngIf="gameBoard.hand.length"
+							cdkDropList
+							#handList="cdkDropList"
+							cdkDropListOrientation="horizontal"
+							[cdkDropListData]="gameBoard.hand"
+							(cdkDropListDropped)="drop($event)">
+
+							<div class="card" *ngFor="let card of gameBoard.hand"
+								(contextmenu)="onRightClickHandCard($event, card)"
+								cdkDrag
+								cdkDragBoundary=".board"
+								[cdkDragData]="card"
+								(cdkDragMoved)="drag($event, card)">
+
+								<div *ngIf="card.card && card.card.images" class="card-inner animated fadeIn faster">
+									<img [src]="card.card.images.large" />
+								</div>
+							</div>
+						</div>
+						<div class="empty" *ngIf="gameBoard.hand.length === 0">
+							<span>Empty</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Command/companion zone -->
+				<div *ngIf="gameBoard.commandZone" class="commandZone zone">
+					<label class="label" fittext [maxFontSize]="10">Commander</label>
+					<div class="cards-wrapper">
+						<div class="cards"
+							#commandZoneList="cdkDropList"
+							cdkDropList
+							[cdkDropListData]="gameBoard.commandZone "
+							(cdkDropListDropped)="drop($event)">
+						
+							<div class="card" *ngFor="let card of gameBoard.commandZone"
+								cdkDrag
+								cdkDragBoundary=".board"
+								(contextmenu)="onRightClickCommandZoneCard($event, card)"
+								[cdkDragData]="card"
+								(cdkDragMoved)="drag($event, card)">
+
+								<div class="card-inner animated fadeIn faster">
+									<img [src]="card.card.images.large" />
+								</div>
+							</div>
+						</div>
+						<div class="empty">
+							<img src="/assets/back.jpg" />
+							<span>Empty</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- Overlay dice -->
+		<div
+			class="overlay-dice"
+			[class.active]="gameBoard.showOverlayDice"
+			(click)="gameBoard.closeOverlayDice()">
+			<div>
+				<fa-icon *ngIf="gameBoard.diceRollIcon" [icon]="gameBoard.diceRollIcon"></fa-icon>
+				<span>{{gameBoard.diceRoll}}</span>
+			</div>
+		</div>
+		
+		<!-- Overlay coin -->
+		<div
+			class="overlay-coin"
+			[class.active]="gameBoard.showOverlayCoin"
+			(click)="gameBoard.closeOverlayCoin()">
+			<div>
+				<fa-icon icon="coin"></fa-icon>
+				<span>{{gameBoard.coinHeads ? 'Heads' : 'Tails'}}</span>
+			</div>
+		</div>
+		
+		<!-- Overlay cards -->
+		<div
+			cdkDrag
+			cdkDragBoundary=".board"
+			(keydown.enter)="handleEnterKeyPress($event)"
+			class="overlay-cards zone"
+			[class.active]="gameBoard.overlayCards.length && gameBoard.showOverlayCards">
+
+			<div class="overlay-cards-inner">
+
+				<div class="overlay-cards-header" cdkDragHandle>
+					<div class="box flex">
+						<mb-textbox [textbox]="gameBoard.textboxOverlay"></mb-textbox>
+					</div>
+					<mb-button [button]="gameBoard.buttonCloseOverlay"></mb-button>
+				</div>
+
+				<div class="overlay-cards-body">
+					<div class="cards-wrapper" *ngIf="gameBoard.overlayCards.length">
+						<div class="cards"
+							cdkDropList
+							#overlayList="cdkDropList"
+							cdkDropListOrientation="horizontal"
+							[cdkDropListData]="gameBoard.overlayCards"
+							(cdkDropListDropped)="drop($event)">
+		
+							<div class="card"
+								(contextmenu)="onRightClickOverlayCard($event, card)"
+								cdkDrag
+								
+								[cdkDragData]="card"
+								(cdkDragMoved)="drag($event, card)"
+								*ngFor="let card of gameBoard.overlayCardsFiltered"
+								(click)="onClickOverlayCardsCard($event, card)">
+				
+								<div class="card-inner animated fadeIn"
+									*ngIf="card && card.card && card.card.images">
+									<img [src]="card.card.images.large" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<!-- Overlay card -->
+		<div
+			class="overlay-card"
+			[class.active]="gameBoard.overlayCard"
+			(click)="gameBoard.closeOverlayCard()">
+		
+			<div class="card" *ngIf="gameBoard.overlayCard">
+				<div class="card-inner animated fadeIn">
+					<img [src]="gameBoard.overlayCard.card.images.large" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<mb-loader [active]="loading"></mb-loader>

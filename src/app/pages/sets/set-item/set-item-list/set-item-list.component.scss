@@ -1,0 +1,66 @@
+@import "settings",
+		"typography";
+
+.item-list-set {
+    display: flex;
+    padding: $spacing;
+    align-items: center;
+    position: relative;
+    transition: $transition;
+    cursor: pointer;
+    &:hover {
+		background: rgba(black, .05);
+    }
+    &:active {
+		border-color: $primary-color!important;
+		box-shadow: $shadow-focus !important;
+		outline: 0 !important;
+    }
+    .set-symbol {
+        position: relative;
+		width: 48px;
+		height: 48px;
+		overflow: hidden;
+		border-radius: 4px;
+		padding: 4px;
+		img {
+			position: absolute;
+			max-height: 100%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			// Contrast was not consistent from scryfall
+			filter: contrast(999%);
+			opacity: .8;
+		}
+	}
+	.set-release-date, .set-total-cards {
+		color: $font-color;
+	}
+	.set-name {
+		font-size: 18px;
+		margin: 0;
+		color: $primary-color;
+		font-weight: bold;
+		padding-right: $spacing;
+		display: flex;
+		align-items: center; 
+	}
+	@media (max-width: $screen-medium) {
+		flex-direction: column;
+		.set-name {
+			width: 100%;
+		}
+	}
+    @media (max-width: $screen-medium) {
+		.set-name {
+			font-size: 16px;
+		}
+    }
+    @for $i from 1 through 50 {
+        &:nth-child(#{50 - $i}) {
+            z-index: $i;
+        }
+    }
+}

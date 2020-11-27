@@ -1,0 +1,8 @@
+<div *ngIf="mbFormControl">
+	<mb-textbox *ngIf="isTextbox()" [textbox]="mbFormControl.control"></mb-textbox>
+	<mb-textarea *ngIf="isTextarea()" [textarea]="mbFormControl.control"></mb-textarea>
+	<mb-select *ngIf="isSelect()" [select]="mbFormControl.control"></mb-select>
+	<mb-editor *ngIf="isEditor()" [editor]="mbFormControl.control"></mb-editor>
+	<mb-checkbox *ngIf="isCheckbox()" [checkbox]="mbFormControl.control"></mb-checkbox>
+	<mb-toggle *ngIf="isToggle()" [toggle]="mbFormControl.control"></mb-toggle>
+</div>

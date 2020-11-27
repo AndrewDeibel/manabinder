@@ -1,0 +1,7 @@
+<mb-items-header [itemsHeader]="cards.items.header"></mb-items-header>
+
+<mb-menu id="deckTabs" [menu]="menu"></mb-menu>
+
+<!-- <mb-add-cards [addCards]="addCards" (cardAdded)="cardAdded()"></mb-add-cards> -->
+
+<mb-cards [cards]="cards" (outputGetCards)="getCards()"></mb-cards>

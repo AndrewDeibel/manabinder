@@ -1,0 +1,24 @@
+<a
+	class="item-grid-set"
+	[routerLink]="set.route ? set.route : []">
+
+	<figure class="set-symbol">
+		<img src="{{set.symbol}}" />
+	</figure>
+
+	<figcaption class="align-center">
+		<div>
+			<span class="set-name">
+				{{set.name}}
+			</span>
+		</div>
+		<span class="subheading set-release-date">
+			Released: {{set.release_date | date}}
+		</span>
+		<br />
+		<span class="subheading set-total-cards">
+			Cards: {{set.total_cards}}
+		</span>
+	</figcaption>
+
+</a>

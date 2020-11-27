@@ -1,0 +1,264 @@
+@import "settings",
+		"typography";
+
+.scanner-wrapper {
+    margin: 0 auto;
+    width: 400px;
+    .scanner {
+        border-radius: $border-radius;
+        position: relative;
+        padding-bottom: percentage(3.5/2.5);
+		overflow: hidden;
+		box-shadow: $shadow;
+	}
+	.scanner-modes {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 3;
+	}
+    .scanner-camera-wrapper {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        webcam {
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			background: black;
+            .webcam-wrapper {
+				background: black;
+				position: absolute;
+				width: 100%;
+				top: 40px;
+				left: 0;
+				right: 0;
+				bottom: 40px;
+				height: calc(100% - 80px); // Subtract header/footer menus to prevent video overlap
+                video {
+					display: block;
+					width: auto;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					position: absolute;
+					max-width: 100%;
+					max-height: 100%;
+                }
+            }
+        }
+        .scanner-camera-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: $transition;
+            height: 80%;
+            width: 80%;
+            border: 1px solid $red;
+            box-shadow: 0 0 4px 4px rgba($red, .4), inset 0 0 4px 4px rgba($red, .4);
+            border-radius: 4%;
+            &.scanning {
+                border-color: $green;
+                box-shadow: 0 0 4px 4px rgba($green, .4), inset 0 0 4px 4px rgba($green, .4);
+            }
+        }
+    }
+    .scanner-status {
+        position: absolute;
+        z-index: 50;
+        top: 3.5 * 10px;
+        right: 2.5 * 10px;
+        width: 24px;
+        height: 24px;
+        background: $red;
+        border-radius: 50%;
+        box-shadow: 0 0 4px 4px rgba($red, .4);
+        transition: $transition;
+        &.scanning {
+            background: $green;
+            box-shadow: 0 0 4px 4px rgba($green, .4);
+		}
+		.scanner-fps {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 100%;
+			margin-right: $spacing;
+			background: rgba(white, .5);
+			white-space: nowrap;
+			border-radius: $border-radius;
+			padding: 2px 8px;
+			@extend .subheading;
+		}
+    }
+    .scanner-options {
+		position: absolute;
+		left: 0;
+		z-index: 5;
+		> mb-menu {
+			> .panel {
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				border-top-right-radius: 0;
+				> ul > li {
+					> a {
+						border-bottom-right-radius: $border-radius;
+					}
+				}
+			}
+		}
+    }
+    .scanner-action {
+		position: absolute;
+		overflow: hidden;
+        z-index: 1;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 72px;
+        height: 72px;
+		border-top-left-radius: 50%;
+		border-top-right-radius: 50%;
+        transition: $transition;
+        color: white;
+        cursor: pointer;
+        user-select: none;
+		background: $green;
+		box-shadow: 0 0 4px 4px rgba($green, .4);
+		&:hover {
+			box-shadow: 0 0 4px 8px rgba($green, .4);
+		}
+		fa-icon {
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+		}
+        &.scanning {
+			background: $red;
+			box-shadow: 0 0 4px 4px rgba($red, .4);
+			&:hover {
+				box-shadow: 0 0 4px 8px rgba($red, .4);
+			}
+        }
+        span {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            @extend .subheading;
+        }
+	}
+	.scanner-result {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 5;
+		mb-menu {
+			.panel {
+				border-top-left-radius: 0;
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+				> ul > li > a {
+					border-bottom-left-radius: $border-radius;
+				}
+			}
+		}
+	}
+    .scanner-results-wrapper {
+        position: absolute;
+        bottom: 40px;
+        left: 0;
+        transition: $transition;
+        z-index: 2;
+        background: rgba(black, .5);
+        border-radius: 4%;
+		border-bottom-left-radius: 0;
+		cursor: pointer;
+        &.prompt {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .scanner-results {
+            width: 100px;
+            overflow: hidden;
+            padding-bottom: percentage(3.5/2.5);
+            border-radius: 4%;
+            .scanner-result {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding-bottom: percentage(3.5/2.5);
+                width: 100px;
+                box-shadow: $shadow;
+                border-radius: 4%;
+				transition: $transition;
+				transform-origin: bottom center;
+				box-shadow: $shadow;
+                .scanner-result-image {
+                    display: block;
+                    border-radius: 4%;
+                }
+                @for $i from 1 through 20 {
+                    &:nth-child(#{$i}) {
+                        margin-top: 14px * ($i - 1);
+                        //margin-left: 4px * ($i - 1);
+                    }
+                }
+            }
+        }
+        .scanner-results-count {
+            z-index: 10;
+            background: $green;
+            color: white;
+            border-radius: 999px;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            box-shadow: $shadow;
+            width: 32px;
+            height: 32px;
+            span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    .scanner-errors {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border-radius: $border-radius;
+        box-shadow: $shadow;
+        z-index: 4;
+        padding: 32px;
+        width: 90%;
+        overflow: auto;
+        max-width: 90%;
+        max-height: 90%;
+    }
+    .scanner-errors-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(black, .8);
+        z-index: 3;
+    }
+}

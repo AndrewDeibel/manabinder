@@ -1,0 +1,8 @@
+<div class="wizard">
+	<mb-menu [menu]="wizard.menu"></mb-menu>
+	<div class="steps">
+		<div *ngFor="let step of wizard.steps" class="step">
+			<p>Step {{step.index}}</p>
+		</div>
+	</div>
+</div>

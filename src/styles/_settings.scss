@@ -1,0 +1,101 @@
+// Typography
+$font-family: 'Source Sans Pro', sans-serif;
+$font-family-heading: 'Source Serif Pro', serif;
+$font-size: 16px;
+$font-color: rgba(black, .6);
+$font-color-heading: rgba(black, .8);
+
+// Colors
+$primary-color: #59acec;
+$secondary-color: #3a5971;
+$white: white;
+$black: black;
+$blue: rgb(68, 140, 235);
+$red: rgb(180, 61, 61);
+$purple: #8936b7;
+$orange: #F68603;
+$green: rgb(58, 156, 58);
+$header-bg: #e3eaef;
+$main-bg: none;
+$panel-bg: white;
+$footer-bg: $header-bg;
+$success: $green;
+$info: $blue;
+$warning: $primary-color;
+$error: $red;
+$deck-background: #0f3122;
+$wraning: #f5e8ae;
+
+// Spacing
+$spacing: 8px;
+
+// Page
+$header-height: 56px;
+
+// Ratios
+$card-ratio: 1.4; //.7142857;
+$art-ratio: percentage(180/264);
+$playmat-ratio: 285/500;
+
+// Borders
+$border-radius: 4px;
+$border-radius-large: 8px;
+$border-radius-card: #{4.8%/4%};
+$border-radius-card-alpha: #{7.4%/5.2%};
+$border-radius-playmat: #{2.85%/5%};
+
+// Borders
+$border-color: rgba(black, .1);
+$border-dark-color: rgba(black, .2);
+$border: 1px solid $border-color;
+$border-dark: 1px solid $border-dark-color;
+$border-stitch: 2px dashed rgba(white, .2);
+
+// Shadows
+$shadow: 0 2px 4px rgba(black, .5);
+$shadow-large: 0 8px 16px rgba(black, .8);
+$shadow-light: 0 1px 2px rgba(black, .2);
+$shadow-inset: inset 0 0 2px rgba(black, .1);
+$shadow-inset-large: inset 0 2px 16px rgba(black, .6);
+$shadow-focus: inset 0 0 0 4px rgba($primary-color, .6);
+$shadow-focus-inset: inset 0 2px 4px rgba(black, .2);
+$text-shadow: 0 1px 1px black;
+$text-shadow-focus: 0 1px 4px rgba(black, .8);
+$text-shadow-inset: 0 1px 1px rgba(white, .6);
+$shadow-icon: 0 1px 1px rgba(black, .6);
+$shadow-bottom-shine: 0 1px 0 0 rgba(white, .4);
+$shadow-top-shine: inset 0 1px 0 0 rgba(white, .4);
+$shadow-success: 0 0 0 3px rgba($success, .2);
+$shadow-info: 0 0 0 3px rgba($info, .2);
+$shadow-warning: 0 0 0 3px rgba($warning, .2);
+$shadow-error: 0 0 0 3px rgba($error, .2);
+
+// Transition
+$transition-base: ease .2s;
+$transition:
+    $transition-base color,
+    $transition-base border,
+    $transition-base background-color,
+    $transition-base box-shadow,
+    $transition-base transform,
+    $transition-base max-width,
+    $transition-base opacity,
+	$transition-base margin,
+	$transition-base fill,
+	$transition-base top,
+	$transition-base left,
+	$transition-base right,
+	$transition-base bottom;
+
+// Screen
+$max: 1080px;
+$min: 320px;
+$screen: 320px;
+$screen-xsmall: $screen * 1;
+$screen-small: $screen * 2;
+$screen-medium: $screen * 3;
+$screen-large: $screen * 4;
+$screen-xlarge: $screen * 5;
+
+// Misc
+$sides: "top", "right", "bottom", "left";

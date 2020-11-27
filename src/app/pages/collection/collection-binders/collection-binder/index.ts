@@ -1,0 +1,1 @@
+export * from './collection-binder.component';

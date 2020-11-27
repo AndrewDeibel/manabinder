@@ -1,0 +1,28 @@
+
+<div [class.bg]="items.showHeader" class="relative small-square" *ngIf="items">
+
+	<mb-items-header *ngIf="items.showHeader" [itemsHeader]="items.header"></mb-items-header>
+
+	<mb-items-filter [itemsFilter]="items.filter" (outputGetItems)="_outputGetItems()" (outputDisplayModeChanged)="displayModeChanged($event)"></mb-items-filter>
+
+	<div class="max box">
+		
+		<!-- List/Grid -->
+		<div id="items-list-grid" class="z-3 relative">
+
+			<div *ngIf="items.items.length == 0" class="empty">
+				<fa-icon icon="archive"></fa-icon>
+				<p>{{items.noResults}}</p>
+				<mb-button *ngIf="items.buttonNoResults" [button]="items.buttonNoResults"></mb-button>
+			</div>
+
+			<mb-items-list *ngIf="items.items.length && isList()" [items]="items.items"></mb-items-list>
+			<mb-items-grid *ngIf="items.items.length && isGrid()" [items]="items.items"></mb-items-grid>
+			<mb-items-simple *ngIf="items.items.length && isSimple()" [items]="items.items"></mb-items-simple>
+			<mb-items-visual *ngIf="items.items.length && isVisual()" [items]="items.items"></mb-items-visual>
+		</div>
+	</div>
+
+	<mb-items-footer *ngIf="items.items.length && items.showFooter" [itemsFooter]="items.footer" (outputGetItems)="_outputGetItems()"></mb-items-footer>
+
+</div>

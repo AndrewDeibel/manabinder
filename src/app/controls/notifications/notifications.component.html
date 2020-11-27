@@ -1,0 +1,25 @@
+<div *ngIf="notifications.length" class="notifications-wrapper">
+	<div class="max relative">
+		<div class="notifications">
+			<div *ngFor="let notification of notifications"
+				(click)="notification.click()"
+				class="notification animated fadeInUp
+					{{notification.alertType}}
+					{{notification.hidden ? 'hidden' : ''}}">
+				<div class="flex padded flex-center">
+					<div>
+						<fa-icon [icon]="notification.icon"></fa-icon>
+					</div>
+					<div class="box">
+						<div class="notification-message">
+							<span>{{notification.message}}</span>
+						</div>
+					</div>
+				</div>
+				<div *ngIf="!notification.duration" class="close" (click)="notification.hide()">
+					<fa-icon icon="times"></fa-icon>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+@import "settings";
+
+:host {
+	display: flex;
+	flex: 1;
+	margin: 4px;
+}
+
+.item-grid-set {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: $border-radius;
+	padding: $spacing;
+	.set-symbol {
+		display: block;
+		height: 80px;
+		width: 80px;
+		position: relative;
+		padding: $spacing;
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			height: 80px;
+
+			// Contrast was not consistent from scryfall
+			filter: contrast(999%);
+			opacity: .8;
+		}
+	}
+	.set-name {
+		padding: $spacing;
+		display: block;
+		font-weight: bold;
+	}
+	.set-total-cards, .set-release-date {
+		color: $font-color;
+	}
+}

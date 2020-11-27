@@ -1,0 +1,8 @@
+<form *ngIf="form" [formGroup]="form.formGroup" (ngSubmit)="onSubmit(form.formGroup)">
+	<h2 *ngIf="form.title">{{form.title}}</h2>
+	<div class="flex padded vertical">
+		<div *ngFor="let formGroup of form.groups">
+			<mb-form-group [mbFormGroup]="formGroup"></mb-form-group>
+		</div>
+	</div>
+</form>

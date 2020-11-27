@@ -1,0 +1,25 @@
+// App
+#app {
+    display: flex;
+    flex-direction: column;
+	flex: 1 0 0;
+	z-index: 1;
+	position: relative;
+}
+
+// Menu
+#menu {
+	width: 100%;
+	border-bottom: $border;
+}
+
+// Main
+#main {
+    background-color: $main-bg;
+    flex: 1;
+    position: relative;
+	z-index: 2;
+	@media (max-width: $screen-small) {
+		padding: 0;
+	}
+}

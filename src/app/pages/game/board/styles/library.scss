@@ -1,0 +1,43 @@
+.library {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 2%;
+	height: $ch;
+	.cards-wrapper {
+		border-top-right-radius: 0;
+		.cards {
+			.card {
+				height: 100%;
+				position: absolute;
+				right: 0 !important;
+				top: 0 !important;
+				.card-inner {
+					height: 100%;
+					img {
+						height: 100%;
+						max-width: none;
+					}
+				}
+				&:hover {
+					img {
+						transform: none;
+					}
+				}
+				img {
+					transform-origin: top right;
+				}
+			}
+		}
+	}
+	.label {
+		position: relative;
+		z-index: 1;
+		position: absolute;
+		bottom: 100%;
+		right: 0;
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+		border-bottom: 0;
+	}
+}

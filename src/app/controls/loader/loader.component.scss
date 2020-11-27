@@ -1,0 +1,111 @@
+@import "settings";
+
+$loader-delay: 400ms;
+$loader-speed: $loader-delay * 5;
+
+$card-width: 70px;
+$card-angle: 8deg;
+$card-shift: 20px;
+$card-count: 5;
+$card-frame-percentage: 100/$card-count;
+
+$card-white: #d1cebe;
+$card-blue: $blue;
+$card-black: mix(white, black, 15%);
+$card-red:$red;
+$card-green: $green;
+
+.hand-container {
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(white, .8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: $transition;
+	opacity: 0;
+	pointer-events: none;
+	&.dark {
+		background: radial-gradient(lighten(black, 15%), lighten(black, 5%));
+	}
+	&.active {
+		opacity: 1;
+		pointer-events: all;
+	}
+}
+
+.hand {
+	position: relative;
+	height: $card-ratio * $card-width;
+}
+
+.card {
+	font-size:22px;
+	height: $card-ratio * $card-width;
+	width: $card-width;
+	//border: 2px solid rgba(black, .8);
+	border-radius: 4%;
+	left: - $card-width / 2;
+	position: absolute;
+	top: 0;
+	box-shadow: $shadow, 0 2px 16px rgba(black, .2);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation-iteration-count: infinite;
+	animation-duration: $loader-speed;
+
+	img {
+		margin: 0 auto;
+		width: 70%;
+	}
+	&.card-white {
+		z-index: 12;
+		animation-name: card;
+		background: $card-white;
+	}
+	&.card-blue {
+		z-index: 10;
+		animation-name: card;
+		background: $card-blue;
+		animation-delay: $loader-delay * 1;
+	}
+	&.card-black {
+		z-index: 8;
+		animation-name: card;
+		background: $card-black;
+		animation-delay: $loader-delay * 2;
+	}
+	&.card-red {
+		z-index: 4;
+		animation-name: card;
+		background: $card-red;
+		animation-delay: $loader-delay * 3;
+	}
+	&.card-green {
+		z-index: 2;
+		animation-name: card;
+		background: $card-green;
+		animation-delay: $loader-delay * 4;
+	}
+}
+
+$position1: translateX(#{-$card-shift * 2}) rotate(#{-$card-angle * 2}); // Start of hand
+$position2: translateX(#{-$card-shift * 1}) rotate(#{-$card-angle * 1});
+$position3: translateX(#{$card-shift * 0}) rotate(#{-$card-angle * 0});
+$position4: translateX(#{$card-shift * 1}) rotate(#{$card-angle * 1});
+$position5: translateX(#{$card-shift * 8}) rotate(#{$card-angle * 6}); // Flip out
+$position6: translateX(#{-$card-shift * 2}) rotate(#{-$card-angle * 2}); // Back of hand
+
+@keyframes card {
+	#{$card-frame-percentage * 0 + "%"} {transform: $position1; z-index: 4}
+	#{$card-frame-percentage * 1 + "%"} {transform: $position2; z-index: 6}
+	#{$card-frame-percentage * 2 + "%"} {transform: $position3; z-index: 8}
+	#{$card-frame-percentage * 3 + "%"} {transform: $position4; z-index: 10}
+	#{$card-frame-percentage * 4 + "%"} {transform: $position5; z-index: 12}
+	#{$card-frame-percentage * 5 + "%"} {transform: $position6; z-index: 2}
+}

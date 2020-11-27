@@ -1,0 +1,41 @@
+<div *ngIf="card">
+	<h2 class="card-name">
+		<div class="flex flex-baseline padded flex-wrap">
+			<div>
+				{{card.name}}
+			</div>
+			<div>
+				<mb-mana-cost [manaCost]="card.mana_cost"></mb-mana-cost>
+			</div>
+		</div>
+	</h2>
+	<div class="flex" *ngIf="card.reserved">
+		<mb-tag [tag]="tagReserved"></mb-tag>
+	</div>
+	<h3 class="card-type">
+		{{card.type}}
+	</h3>
+	<p class="card-set" *ngIf="card.set_symbol || card.set_name">
+		<a class="card-set-link" [routerLink]="'/sets/' + card.set_code">
+			<img class="card-set-symbol" [src]="card.set_symbol" />
+		</a>
+		<span class="card-set-date">
+			<a class="card-set-name" [routerLink]="'/sets/' + card.set_code">{{card.set_name}}</a>
+			<span class="card-release-date">&nbsp;-&nbsp;{{card.released_at | date}}</span>
+		</span>
+	</p>
+	<p class="card-text" *ngIf="card.text">
+		<span [innerHtml]="card.text"></span>
+	</p>
+	<p class="card-flavor-text" *ngIf="card.flavor_text">
+		<i>{{card.flavor_text}}</i>
+	</p>
+	<p class="card-power-toughness" *ngIf="card.power && card.toughness">
+		<span class="card-power">{{card.power}}</span>
+		<span>/</span>
+		<span class="card-toughness">{{card.toughness}}</span>
+	</p>
+	<p class="card-artist">
+		<span>Illustrated by</span> <a [routerLink]="card.artist_route">{{card.artist_name}}</a>
+	</p>
+</div>

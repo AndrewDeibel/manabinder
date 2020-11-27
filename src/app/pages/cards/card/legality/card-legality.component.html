@@ -1,0 +1,33 @@
+<div id="page-card-legality" *ngIf="card" class="flex padded-medium vertical">
+
+	<!-- Formats -->
+	<div>
+		<h3>Formats</h3>
+		<div class="flex padded flex-wrap">
+			<div class="width-6" *ngFor="let legality of card.legalities">
+				<div class="flex padded">
+					<div>
+						<mb-tag [tag]="buildTag(legality)"></mb-tag>
+					</div>
+					<div>
+						<span class="legality-format">{{legality.name}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Formats -->
+	<div *ngIf="card.rulings.length">
+		<h3>Rulings</h3>
+		<div class="flex padded vertical">
+			<div *ngFor="let ruling of card.rulings">
+				<div class="bold">
+					{{ruling.date | date}}
+				</div>
+				<div [innerHtml]="ruling.text"></div>
+			</div>
+		</div>
+	</div>
+
+</div>

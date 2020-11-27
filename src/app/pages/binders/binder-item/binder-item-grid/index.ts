@@ -1,0 +1,1 @@
+export * from './binder-item-grid.component';

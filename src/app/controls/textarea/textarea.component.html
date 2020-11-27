@@ -1,0 +1,12 @@
+<div class="textarea-wrapper">
+	<label *ngIf="textarea.label" class="label">{{textarea.label}}</label>
+	<textarea
+		[style.width]="textarea.width ? textarea.width + 'px' : null"
+		placeholder="{{textarea.placeholder ? textarea.placeholder : null}}"
+		class="textarea {{textarea.classes}}"
+		(keydown.enter)="_keydownEnter()"
+		(change)="_change()"
+		[disabled]="textarea.disabled ? textarea.disabled : null"
+		[(ngModel)]="value">
+	</textarea>
+</div>

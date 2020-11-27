@@ -1,0 +1,27 @@
+.counter {
+	position: absolute;
+	transform-origin: center;
+	z-index: 10000;
+    width: 4%;
+	font-size: 1.25em;
+	font-weight: bold;
+
+	.counter-inner {
+		padding-bottom: 100%;
+		background: white;
+		position: absolute;
+		text-align: center;
+		border-radius: 10%;
+		box-shadow: $shadow;
+		width: 100%;
+		span {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	&.cdk-drag-placeholder {
+		opacity: 0;
+	}
+}

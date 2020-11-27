@@ -1,0 +1,23 @@
+<div class="card-groups-wrapper">
+	<div class="flex padded card-groups">
+		<div class="card-group" *ngFor="let cardGroup of cardGroups">
+			<div class="card-group-header">
+				<div class="flex flex-nowrap padded align-middle justify-center">
+					<fa-icon [icon]="cardGroup.icon"></fa-icon>
+					<div class="ellipsis">{{cardGroup.title}}</div>
+					<span class="card-group-count">{{cardGroup.count}}</span>
+				</div>
+			</div>
+			<div class="flex padded vertical">
+				<div class="card-visual" *ngFor="let card of cardGroup.cards">
+					<div [routerLink]="card.route" class="card-visual-image-wrapper ">
+						<img src="{{card.images.large}}" class="card-visual-image border-radius-card shadow" />
+						<img src="{{card.images.large}}" class="card-visual-image-hover border-radius-card shadow visual-hover" />
+						<span class="count" *ngIf="card.count > 1">{{card.count}}</span>
+						<mb-menu [menu]="card.itemsMenu"></mb-menu>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

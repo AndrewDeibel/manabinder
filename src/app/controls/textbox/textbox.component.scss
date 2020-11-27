@@ -1,0 +1,50 @@
+@import "settings";
+
+
+.textbox-wrapper {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	color: $font-color;
+	fa-icon {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 16px;
+		cursor: pointer;
+	}
+}
+.textbox {
+    border-radius: $border-radius;
+	padding: 0 16px;
+	padding-right: 32px;
+	text-overflow: ellipsis;
+    height: 40px;
+	border: $border;
+	box-shadow: $shadow-inset;
+	transition: $transition;
+	max-width: 100%;
+	&:focus {
+		border-color: $primary-color;
+		box-shadow: $shadow-focus, $shadow-focus-inset;
+	}
+	&[type=number] {
+		padding: 0;
+		padding-left: 8px;
+		line-height: 40px;
+	}
+}
+
+// Validation
+:host {
+	&.ng-invalid {
+		.textbox {
+			border-color: $error;
+			box-shadow: $shadow-inset, $shadow-bottom-shine;
+			&:focus {
+				box-shadow: $shadow-focus-inset, $shadow-bottom-shine, $shadow-error;
+			}
+		}
+	}
+}

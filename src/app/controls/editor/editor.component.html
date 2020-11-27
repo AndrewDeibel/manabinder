@@ -1,0 +1,2 @@
+<label *ngIf="editor.label" class="label">{{editor.label}}</label>
+<ckeditor [editor]="ckEditor" [(ngModel)]="editor.value" (ready)="onReady($event)"></ckeditor>

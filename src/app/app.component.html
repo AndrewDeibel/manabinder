@@ -1,0 +1,12 @@
+<mb-header></mb-header>
+<mb-notifications></mb-notifications>
+<div class="z-3" id="menu" *ngIf="showMenu">
+	<div class="max">
+		<mb-menu [menu]="menu"></mb-menu>
+	</div>
+</div>
+<main id="main">
+	<router-outlet></router-outlet>
+</main>
+<mb-footer></mb-footer>
+<mb-loader [active]="loading"></mb-loader>

@@ -1,0 +1,12 @@
+@import "settings";
+
+.alert {
+	padding: $spacing;
+	border-radius: $border-radius;
+	border: $border;
+	background: rgba(white, .5);
+}
+
+.warning {
+	background: $warning;
+}

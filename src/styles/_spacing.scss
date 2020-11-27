@@ -1,0 +1,78 @@
+// Padding
+.padding {
+    padding: $spacing;
+}
+.padding-medium {
+	padding: $spacing * 3;
+}
+.padding-large {
+	padding: $spacing * 6;
+}
+
+// Sides
+@each $side in $sides {
+	.padding-#{$side} {
+		padding-#{$side}: $spacing;
+	}
+	.padding-#{$side}-medium {
+		padding-#{$side}: $spacing * 3;
+	}
+	.margin-#{$side} {
+		margin-#{$side}: $spacing;
+	}
+	.margin-#{$side}-medium {
+		margin-#{$side}: $spacing * 3;
+	}
+}
+
+// Screen small
+@media (max-width: $screen-small) {
+	.small-padding {
+		padding: $spacing;
+	}
+}
+
+// Margin
+.margin {
+    margin: $spacing;
+}
+.margin-medium {
+	margin: $spacing * 3;
+}
+.margin-large {
+	margin: $spacing * 6;
+}
+
+// Alignment
+.auto-margin {
+    margin: auto;
+}
+.center {
+    margin: 0 auto;
+}
+
+// Layout padding
+.padded {
+    margin-top: -$spacing;
+    margin-left: -$spacing;
+    > * {
+        padding-top: $spacing;
+        padding-left: $spacing;
+    }
+}
+.padded-medium {
+	margin-top: -$spacing * 3;
+	margin-left: -$spacing * 3;
+	> * {
+		padding-top: $spacing * 3;
+		padding-left: $spacing * 3;
+	}
+}
+.padded-large {
+	margin-top: -$spacing * 6;
+	margin-left: -$spacing * 6;
+	> * {
+		padding-top: $spacing * 6;
+		padding-left: $spacing * 6;
+	}
+}
